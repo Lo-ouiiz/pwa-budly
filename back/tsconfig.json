@@ -4,9 +4,13 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "dist",
+    "rootDir": ".",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": true
   },
-  "include": ["src"]
+  "include": ["src", "generated/prisma"],
+  "exclude": ["node_modules", "prisma"]
 }
