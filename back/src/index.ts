@@ -1,7 +1,6 @@
-// src/index.ts
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { prisma } from './lib/prisma';
+import { prisma } from './lib/prisma.js';
 
 const app = express();
 
