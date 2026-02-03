@@ -8,8 +8,107 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+  id                   Int              @id @default(autoincrement())
+  firstName            String
+  lastName             String
+  email                String           @unique
+  password             String
+  birthDate            DateTime
+  street               String
+  postalCode           String
+  city                 String
+  country              String
+  phoneNumber          String?
+  createdAt            DateTime         @default(now())
+
+  sponsorships         Sponsorship[]
+  invoices             Invoice[]
+}
+
+model Zoo {
+  id            Int       @id @default(autoincrement())
+  name          String
+  street        String
+  postalCode    String
+  city          String
+  country       String
+  logo          String?
+  labels        String[]
+  photos        String[]
+  description   String
+
+  animals       Animal[]
+  plans         SponsorshipPlan[]
+}
+
+model Animal {
+  id                     Int       @id @default(autoincrement())
+  firstName              String
+  photos                 String[]
+  species                String
+  subSpecies             String?
+  age                    Int?
+  gender                 String
+  conservationStatus     String
+  birthDate              DateTime?
+  birthPlace             String?
+  personalityTraits      String[]
+  story                  String
+  zooDescription         String
+  naturalHabitat         String
+  diet                   String
+  weightKg               Float?
+  sizeCm                 Float?
+  physicalSpecificity    String?
+  lifeExpectancyYears    Int?
+  sponsorshipImpact      String
+
+  zooId                  Int
+  zoo                    Zoo            @relation(fields: [zooId], references: [id])
+
+  sponsorships           Sponsorship[]
+}
+
+model SponsorshipPlan {
+  id                Int       @id @default(autoincrement())
+  name              String
+  description       String
+  basePrice         Float
+  taxReducedPrice   Float?
+  benefits          String
+  durationMonths    Int
+
+  zooId             Int
+  zoo               Zoo        @relation(fields: [zooId], references: [id])
+
+  sponsorships      Sponsorship[]
+}
+
+model Sponsorship {
+  id                   Int       @id @default(autoincrement())
+  isActive             Boolean   @default(true)
+  startDate            DateTime
+  endDate              DateTime?
+  monthlyAmount        Float
+  autoRenew            Boolean   @default(false)
+
+  userId               Int
+  user                 User      @relation(fields: [userId], references: [id])
+
+  animalId             Int
+  animal               Animal    @relation(fields: [animalId], references: [id])
+
+  planId               Int
+  plan                 SponsorshipPlan @relation(fields: [planId], references: [id])
+}
+
+model Invoice {
+  id            Int       @id @default(autoincrement())
+  amount        Float
+  issuedAt      DateTime  @default(now())
+  paid          Boolean   @default(false)
+  pdfUrl        String?
+
+  userId        Int
+  user          User      @relation(fields: [userId], references: [id])
 }
