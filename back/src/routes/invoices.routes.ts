@@ -6,9 +6,7 @@ const router = Router();
 // GET all invoices
 router.get('/', async (_req: Request, res: Response) => {
   try {
-    const invoices = await prisma.invoice.findMany({
-      include: { user: true, sponsorship: true },
-    });
+    const invoices = await prisma.invoice.findMany();
     res.json(invoices);
   } catch (err) {
     console.error(err);
@@ -22,7 +20,6 @@ router.get('/:id', async (req: Request, res: Response) => {
   try {
     const invoice = await prisma.invoice.findUnique({
       where: { id },
-      include: { user: true, sponsorship: true },
     });
     if (!invoice) return res.status(404).json({ error: 'Invoice not found' });
     res.json(invoice);
@@ -74,7 +71,6 @@ router.put('/:id', async (req: Request, res: Response) => {
         paid,
         pdfUrl,
       },
-      include: { user: true, sponsorship: true },
     });
     res.json(updatedInvoice);
   } catch (err: any) {

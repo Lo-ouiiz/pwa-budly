@@ -6,9 +6,7 @@ const router = Router();
 // GET all sponsorships
 router.get('/', async (_req: Request, res: Response) => {
   try {
-    const sponsorships = await prisma.sponsorship.findMany({
-      include: { user: true, animal: true, plan: true },
-    });
+    const sponsorships = await prisma.sponsorship.findMany();
     res.json(sponsorships);
   } catch (err) {
     console.error(err);
@@ -22,7 +20,6 @@ router.get('/:id', async (req: Request, res: Response) => {
   try {
     const sponsorship = await prisma.sponsorship.findUnique({
       where: { id },
-      include: { user: true, animal: true, plan: true },
     });
     if (!sponsorship) return res.status(404).json({ error: 'Sponsorship not found' });
     res.json(sponsorship);
@@ -76,7 +73,6 @@ router.put('/:id', async (req: Request, res: Response) => {
         autoRenew,
         status,
       },
-      include: { user: true, animal: true, plan: true },
     });
     res.json(updatedSponsorship);
   } catch (err: any) {
