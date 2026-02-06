@@ -8,10 +8,39 @@ datasource db {
 }
 
 enum SponsorshipStatus {
-  ACTIVE
-  PAUSED
-  CANCELLED
-  EXPIRED
+  ACTIF
+  EN_PAUSE
+  ANNULE
+  EXPIRE
+}
+
+enum PersonalityTrait {
+  Solitaire
+  Sociable
+  Affectueux
+  Territorial
+  Protecteur
+  Indépendant
+  Amical
+  Curieux
+  Paresseux
+  Energique
+  Joueur
+  Endormi
+  Timide
+  Audacieux
+  Colérique
+  Calme
+  Sensible
+  Méfiant
+  Joyeux
+  Drôle
+  Grognon
+  Mystérieux
+  Fier
+  Arrogant
+  Charmant
+  Majestueux
 }
 
 model User {
@@ -28,6 +57,7 @@ model User {
   phoneNumber   String?
   createdAt     DateTime  @default(now())
 
+  traits        PersonalityTrait[]
   sponsorships  Sponsorship[]
   invoices      Invoice[]
 }
@@ -48,7 +78,6 @@ model Zoo {
 
   animals       Animal[]
   plans         SponsorshipPlan[]
-  traits        PersonalityTrait[]
 }
 
 model Animal {
@@ -80,21 +109,6 @@ model Animal {
   traits                 PersonalityTrait[]
   sponsorships           Sponsorship[]
 
-  @@index([zooId])
-}
-
-model PersonalityTrait {
-  id          Int       @id @default(autoincrement())
-  name        String
-  description String?
-  deletedAt   DateTime?
-
-  zooId       Int
-  zoo         Zoo        @relation(fields: [zooId], references: [id])
-
-  animals     Animal[]
-
-  @@unique([zooId, name])
   @@index([zooId])
 }
 
