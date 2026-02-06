@@ -8,7 +8,6 @@ router.get('/', async (_req: Request, res: Response) => {
   try {
     const plans = await prisma.sponsorshipPlan.findMany({
       where: { deletedAt: null },
-      include: { zoo: true, sponsorships: true },
     });
     res.json(plans);
   } catch (err) {
@@ -23,7 +22,6 @@ router.get('/:id', async (req: Request, res: Response) => {
   try {
     const plan = await prisma.sponsorshipPlan.findFirst({
       where: { id, deletedAt: null },
-      include: { zoo: true, sponsorships: true },
     });
     if (!plan) return res.status(404).json({ error: 'Sponsorship plan not found' });
     res.json(plan);
@@ -84,7 +82,6 @@ router.put('/:id', async (req: Request, res: Response) => {
         benefits,
         durationMonths,
       },
-      include: { zoo: true, sponsorships: true },
     });
     res.json(updatedPlan);
   } catch (err: any) {

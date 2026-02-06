@@ -8,7 +8,6 @@ router.get('/', async (_req: Request, res: Response) => {
   try {
     const zoos = await prisma.zoo.findMany({
       where: { deletedAt: null },
-      include: { animals: true, plans: true },
     });
     res.json(zoos);
   } catch (err) {
@@ -23,7 +22,6 @@ router.get('/:id', async (req: Request, res: Response) => {
   try {
     const zoo = await prisma.zoo.findFirst({
       where: { id, deletedAt: null },
-      include: { animals: true, plans: true },
     });
     if (!zoo) return res.status(404).json({ error: 'Zoo not found' });
     res.json(zoo);
@@ -94,7 +92,6 @@ router.put('/:id', async (req: Request, res: Response) => {
     const updatedZoo = await prisma.zoo.update({
       where: { id },
       data: req.body,
-      include: { animals: true, plans: true },
     });
     res.json(updatedZoo);
   } catch (err: any) {

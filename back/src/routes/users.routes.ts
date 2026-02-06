@@ -17,8 +17,6 @@ const userSelect = {
   country: true,
   phoneNumber: true,
   traits: true,
-  sponsorships: true,
-  invoices: true,
   createdAt: true,
 };
 
