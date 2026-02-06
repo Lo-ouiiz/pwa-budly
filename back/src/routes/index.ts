@@ -9,10 +9,10 @@ import invoicesRoutes from './invoices.routes.js';
 const router = Router();
 
 router.use('/users', usersRoutes);
-// router.use('/animals', animalsRoutes);
-// router.use('/zoos', zoosRoutes);
-// router.use('/plans', sponsorshipPlansRoutes);
-// router.use('/sponsorships', sponsorshipsRoutes);
-// router.use('/invoices', invoicesRoutes);
+router.use('/animals', animalsRoutes);
+router.use('/zoos', zoosRoutes);
+router.use('/plans', sponsorshipPlansRoutes);
+router.use('/sponsorships', sponsorshipsRoutes);
+router.use('/invoices', invoicesRoutes);
 
 export default router;
