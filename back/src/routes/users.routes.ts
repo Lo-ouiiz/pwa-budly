@@ -201,43 +201,4 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-// LOGIN user
-router.post('/login', async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).json({ error: 'Email and password are required' });
-  }
-
-  try {
-    const user = await prisma.user.findUnique({
-      where: { email },
-      select: {
-        ...userSelect,
-        passwordHash: true,
-      },
-    });
-
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
-
-    const isValidPassword = await bcrypt.compare(
-      password,
-      user.passwordHash
-    );
-
-    if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
-
-    const { passwordHash, ...safeUser } = user;
-
-    res.json(safeUser);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
 export default router;
