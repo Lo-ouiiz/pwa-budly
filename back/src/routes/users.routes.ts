@@ -1,12 +1,14 @@
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { prisma } from '../lib/prisma.js';
+import { UserRole } from '../../generated/prisma/enums.js';
 
 const router = Router();
 const SALT_ROUNDS = 10;
 
 const userSelect = {
   id: true,
+  role: true,
   firstName: true,
   lastName: true,
   email: true,
@@ -68,6 +70,7 @@ router.post('/', async (req: Request, res: Response) => {
     country,
     phoneNumber,
     traits,
+    role,
   } = req.body;
 
   if (
@@ -82,6 +85,10 @@ router.post('/', async (req: Request, res: Response) => {
     !country
   ) {
     return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  if (role && !Object.values(UserRole).includes(role)) {
+    return res.status(400).json({ error: 'Invalid user role' });
   }
 
   try {
@@ -100,6 +107,7 @@ router.post('/', async (req: Request, res: Response) => {
         country,
         phoneNumber,
         traits,
+        role,
       },
       select: userSelect,
     });
@@ -129,7 +137,12 @@ router.put('/:id', async (req: Request, res: Response) => {
     country,
     phoneNumber,
     traits,
+    role,
   } = req.body;
+
+  if (role && !Object.values(UserRole).includes(role)) {
+    return res.status(400).json({ error: 'Invalid user role' });
+  }
 
   try {
     const data: any = {
@@ -142,6 +155,7 @@ router.put('/:id', async (req: Request, res: Response) => {
       country,
       phoneNumber,
       traits,
+      role,
     };
 
     if (birthDate) {
@@ -187,8 +201,6 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-export default router;
-
 // LOGIN user
 router.post('/login', async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -200,6 +212,10 @@ router.post('/login', async (req: Request, res: Response) => {
   try {
     const user = await prisma.user.findUnique({
       where: { email },
+      select: {
+        ...userSelect,
+        passwordHash: true,
+      },
     });
 
     if (!user) {
@@ -223,3 +239,5 @@ router.post('/login', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+export default router;

@@ -43,8 +43,15 @@ enum PersonalityTrait {
   Majestueux
 }
 
+enum UserRole {
+  ZOO_ADMIN
+  ZOO_USER
+  USER
+}
+
 model User {
   id            Int       @id @default(autoincrement())
+  role          UserRole  @default(USER)
   firstName     String
   lastName      String
   email         String    @unique
