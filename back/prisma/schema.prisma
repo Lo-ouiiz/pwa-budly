@@ -49,6 +49,20 @@ enum UserRole {
   USER
 }
 
+enum ConservationStatus {
+  NE
+  NA
+  DD
+  LC
+  NT
+  VU
+  EN
+  CR
+  RE
+  EW
+  EX
+}
+
 model User {
   id            Int       @id @default(autoincrement())
   role          UserRole  @default(USER)
@@ -96,7 +110,7 @@ model Animal {
   subSpecies             String?
   age                    Int
   gender                 String
-  conservationStatus     String
+  conservationStatus     ConservationStatus
   birthDate              DateTime?
   birthPlace             String?
   story                  String?
