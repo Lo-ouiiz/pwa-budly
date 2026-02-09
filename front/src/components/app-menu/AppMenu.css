@@ -1,0 +1,131 @@
+.nav-desktop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+}
+
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+  }
+}
+
+.nav-desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-desktop-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.nav-desktop-link:hover {
+  opacity: 0.8;
+}
+
+.nav-desktop-link.active {
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+}
+
+.nav-desktop-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.nav-desktop-account:hover {
+  opacity: 0.9;
+}
+
+.nav-mobile-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5rem;
+  z-index: 50;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground);
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile-top {
+    display: none;
+  }
+}
+
+.nav-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  border-top: 1px solid var(--border);
+  background-color: var(--primary);
+  padding: 0.75rem 0;
+  border-radius: 10px 10px 0 0;
+}
+
+@media (min-width: 768px) {
+  .nav-mobile {
+    display: none;
+  }
+}
+
+.nav-mobile-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.nav-mobile-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--primary-foreground);
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.nav-mobile-item.active {
+  font-weight: 600;
+  opacity: 1;
+}
+
+.nav-mobile-item:hover {
+  opacity: 0.85;
+}
