@@ -132,4 +132,29 @@
     font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
     font-weight: 600;
   }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  a {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
 }
