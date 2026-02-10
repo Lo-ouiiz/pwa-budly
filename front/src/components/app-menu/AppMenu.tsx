@@ -31,9 +31,11 @@ export default function AppMenu() {
   return (
     <>
       <header className="nav-desktop">
-        <h1 className="text-lg font-bold">
-          <NavLink to="/">BUDLY</NavLink>
-        </h1>
+        <div className="text-lg font-bold">
+          <NavLink to="/">
+            <h3>BUDLY</h3>
+          </NavLink>
+        </div>
         <nav className="nav-desktop-links">
           {navItems
             .filter((item) => item.showOnDesktop)
@@ -65,9 +67,9 @@ export default function AppMenu() {
       </header>
 
       <header className="nav-mobile-top">
-        <h1 className="text-lg font-bold">
-          <span>BUDLY</span>
-        </h1>
+        <div className="text-lg font-bold">
+          <h3>BUDLY</h3>
+        </div>
       </header>
 
       <nav className="nav-mobile">

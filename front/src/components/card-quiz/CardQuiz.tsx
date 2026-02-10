@@ -11,7 +11,7 @@ export default function CardQuiz() {
       <div className="card-quiz-overlay" />
 
       <CardContent className="card-quiz-content">
-        <h2>Quiz</h2>
+        <h2 className="card-quiz-title">Quiz</h2>
         <p className="card-quiz-text">Découvrez quel animal est fait pour vous.</p>
       </CardContent>
 

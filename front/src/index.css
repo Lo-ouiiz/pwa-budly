@@ -60,7 +60,7 @@
   --secondary-foreground: #fcf1ed;
   --muted: #20544a;
   --muted-foreground: #e9eeed;
-  --accent: #e2704a;
+  --accent: #a4b9b5;
   --accent-foreground: #fcf1ed;
   --destructive: #da3b3b;
   --border: #e0e0e0;
@@ -75,7 +75,7 @@
   --sidebar-foreground: #252525;
   --sidebar-primary: #20544a;
   --sidebar-primary-foreground: #e9eeed;
-  --sidebar-accent: #e2704a;
+  --sidebar-accent: #a4b9b5;
   --sidebar-accent-foreground: #fcf1ed;
   --sidebar-border: #e0e0e0;
   --sidebar-ring: #467169;
@@ -94,7 +94,7 @@
   --secondary-foreground: #fcf1ed;
   --muted: #14332d;
   --muted-foreground: #a4b9b5;
-  --accent: #8a442d;
+  --accent: #467169;
   --accent-foreground: #fcf1ed;
   --destructive: #e2704a;
   --border: #467169;
@@ -109,7 +109,7 @@
   --sidebar-foreground: #e9eeed;
   --sidebar-primary: #20544a;
   --sidebar-primary-foreground: #e9eeed;
-  --sidebar-accent: #8a442d;
+  --sidebar-accent: #467169;
   --sidebar-accent-foreground: #fcf1ed;
   --sidebar-border: #467169;
   --sidebar-ring: #467169;
@@ -131,16 +131,19 @@
   h6 {
     font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
     font-weight: 600;
+    color: var(--primary);
   }
 
   h1 {
     font-size: 2rem;
     font-weight: 700;
+    margin-bottom: 1rem;
   }
 
   h2 {
     font-size: 1.5rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
   }
 
   h3 {

@@ -5,6 +5,10 @@
   border-radius: 0.75rem;
 }
 
+.card-quiz-title {
+  color: var(--primary-foreground);
+}
+
 .card-quiz-bg {
   position: absolute;
   inset: 0;
