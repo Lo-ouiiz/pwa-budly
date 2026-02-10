@@ -1,0 +1,114 @@
+.zoo-section {
+  width: 100%;
+  position: relative;
+}
+
+.zoo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zoo-arrows {
+  display: none;
+  gap: 0.25rem;
+  position: absolute;
+  top: -35px;
+  right: 50px;
+}
+
+@media (min-width: 768px) {
+  .zoo-arrows {
+    display: flex;
+  }
+}
+
+.zoo-carousel-prev,
+.zoo-carousel-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.zoo-carousel-prev:hover,
+.zoo-carousel-next:hover {
+  opacity: 0.85;
+}
+
+.zoo-carousel {
+  width: 100%;
+  position: relative;
+}
+
+.zoo-carousel-item {
+  flex-basis: 65%;
+}
+
+@media (min-width: 640px) {
+  .zoo-carousel-item {
+    flex-basis: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .zoo-carousel-item {
+    flex-basis: 25%;
+  }
+}
+
+.zoo-card {
+  position: relative;
+  height: 250px;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.zoo-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+
+.zoo-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.zoo-card-logo {
+  height: auto;
+  max-width: 225px;
+  max-height: unset;
+}
+
+@media (min-width: 768px) {
+  .zoo-card-logo {
+    width: auto;
+    max-height: 150px;
+    max-width: unset;
+  }
+}
+
+.zoo-card-title {
+  position: relative;
+  padding: 1rem;
+  color: var(--primary-foreground);
+  text-align: left;
+  width: 100%;
+}
