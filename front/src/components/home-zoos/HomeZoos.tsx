@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Carousel,
   CarouselContent,
@@ -7,8 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import './ZooPartnership.css';
-import { Skeleton } from '../ui/skeleton';
+import './HomeZoos.css';
 
 type Zoo = {
   id: number;
@@ -25,26 +25,25 @@ export default function HomeZoos() {
     fetch('http://localhost:3000/zoos')
       .then((res) => res.json())
       .then((data: Zoo[]) => {
-        console.log(data);
         setZoos(data);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error('Erreur lors du chargement des zoos:', err);
+      .catch(() => {
         setLoading(false);
       });
   }, []);
 
   if (loading) {
     return (
-      <section className="zoo-section">
-        <div className="zoo-header">
+      <section className="home-zoos-section">
+        <div className="home-zoos-header">
           <h1>Nos zoos partenaires</h1>
         </div>
-        <Carousel opts={{ align: 'start', dragFree: true }} className="zoo-carousel">
+
+        <Carousel opts={{ align: 'start', dragFree: true }} className="home-zoos-carousel">
           <CarouselContent>
             {[...Array(3)].map((_, i) => (
-              <CarouselItem key={i} className="zoo-carousel-item">
+              <CarouselItem key={i} className="home-zoos-carousel-item">
                 <Skeleton className="h-60 w-full rounded-xl" />
               </CarouselItem>
             ))}
@@ -56,43 +55,42 @@ export default function HomeZoos() {
 
   if (zoos.length === 0) {
     return (
-      <section className="zoo-section">
-        <div className="zoo-header">
+      <section className="home-zoos-section">
+        <div className="home-zoos-header">
           <h1>Nos zoos partenaires</h1>
         </div>
-        <p className="p-4 text-center">Aucun zoo trouvé.</p>;
+        <p className="p-4 text-center">Aucun zoo trouvé.</p>
       </section>
     );
   }
 
   return (
-    <section className="zoo-section">
-      <div className="zoo-header">
+    <section className="home-zoos-section">
+      <div className="home-zoos-header">
         <h1>Nos zoos partenaires</h1>
       </div>
 
-      <Carousel opts={{ align: 'start', dragFree: true }} className="zoo-carousel">
+      <Carousel opts={{ align: 'start', dragFree: true }} className="home-zoos-carousel">
         <CarouselContent>
           {zoos.map((zoo) => (
-            <CarouselItem key={zoo.name} className="zoo-carousel-item">
-              <div className="zoo-card" style={{ backgroundImage: `url(${zoo.photos[0]})` }}>
-                <div className="zoo-card-overlay" />
-                <div className="zoo-card-content">
-                  <img src={zoo.logo} alt={`Logo de ${zoo.name}`} className="zoo-card-logo" />
-                  <h3 className="zoo-card-title">{zoo.name}</h3>
+            <CarouselItem key={zoo.id} className="home-zoos-carousel-item">
+              <div className="home-zoos-card" style={{ backgroundImage: `url(${zoo.photos[0]})` }}>
+                <div className="home-zoos-card-footer">
+                  <p className="home-zoos-card-title">{zoo.name}</p>
+                  <img src={zoo.logo} alt={zoo.name} className="home-zoos-card-logo" />
                 </div>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
 
-        <div className="zoo-arrows">
-          <CarouselPrevious className="zoo-carousel-prev">
-            <ArrowLeftIcon size={18} weight="bold" />
+        <div className="home-zoos-arrows">
+          <CarouselPrevious className="home-zoos-carousel-prev">
+            <ArrowLeftIcon size={20} weight="bold" />
           </CarouselPrevious>
 
-          <CarouselNext className="zoo-carousel-next">
-            <ArrowRightIcon size={18} weight="bold" />
+          <CarouselNext className="home-zoos-carousel-next">
+            <ArrowRightIcon size={20} weight="bold" />
           </CarouselNext>
         </div>
       </Carousel>

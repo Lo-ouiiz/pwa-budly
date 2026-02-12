@@ -1,15 +1,15 @@
-.zoo-section {
+.home-zoos-section {
   width: 100%;
   position: relative;
 }
 
-.zoo-header {
+.home-zoos-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.zoo-arrows {
+.home-zoos-arrows {
   display: none;
   gap: 0.25rem;
   position: absolute;
@@ -18,97 +18,92 @@
 }
 
 @media (min-width: 768px) {
-  .zoo-arrows {
+  .home-zoos-arrows {
     display: flex;
   }
 }
 
-.zoo-carousel-prev,
-.zoo-carousel-next {
+.home-zoos-carousel {
+  width: 100%;
+  position: relative;
+}
+
+.home-zoos-carousel-prev,
+.home-zoos-carousel-next {
   width: 40px;
   height: 40px;
   border-radius: 9999px;
   background-color: var(--primary);
   color: var(--primary-foreground);
-  border: unset;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    opacity 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
-.zoo-carousel-prev:hover,
-.zoo-carousel-next:hover {
+.home-zoos-carousel-prev:hover,
+.home-zoos-carousel-next:hover {
   opacity: 0.85;
 }
 
-.zoo-carousel {
-  width: 100%;
-  position: relative;
-}
-
-.zoo-carousel-item {
-  flex-basis: 65%;
+.home-zoos-carousel-item {
+  flex-basis: 50%;
 }
 
 @media (min-width: 640px) {
-  .zoo-carousel-item {
+  .home-zoos-carousel-item {
     flex-basis: 40%;
   }
 }
 
 @media (min-width: 1024px) {
-  .zoo-carousel-item {
-    flex-basis: 25%;
+  .home-zoos-carousel-item {
+    flex-basis: 33%;
   }
 }
 
-.zoo-card {
-  position: relative;
+.home-zoos-card {
   height: 250px;
   border-radius: 1rem;
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  border: 2px solid var(--border);
   display: flex;
   align-items: flex-end;
 }
 
-.zoo-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-}
-
-.zoo-card-content {
+.home-zoos-card-footer {
+  width: 100%;
+  background-color: white;
+  padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  z-index: 1;
+  gap: 0.75rem;
 }
 
-.zoo-card-logo {
-  height: auto;
-  max-width: 225px;
-  max-height: unset;
+.home-zoos-card-logo {
+  display: none;
 }
 
 @media (min-width: 768px) {
-  .zoo-card-logo {
+  .home-zoos-card-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home-zoos-card-logo {
+    display: block;
+    height: 30px;
     width: auto;
-    max-height: 150px;
-    max-width: unset;
+    object-fit: contain;
   }
 }
 
-.zoo-card-title {
-  position: relative;
-  padding: 1rem;
-  color: var(--primary-foreground);
-  text-align: left;
-  width: 100%;
+.home-zoos-card-title {
+  font-weight: 600;
+  color: var(--foreground);
 }

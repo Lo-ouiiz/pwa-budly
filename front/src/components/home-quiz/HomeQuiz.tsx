@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import './CardQuiz.css';
+import './HomeQuiz.css';
 
 export default function HomeQuiz() {
   return (
