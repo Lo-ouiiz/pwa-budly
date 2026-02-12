@@ -1,15 +1,15 @@
-.card-quiz {
+.home-quiz {
   width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 0.75rem;
 }
 
-.card-quiz-title {
+.home-quiz-title {
   color: var(--primary-foreground);
 }
 
-.card-quiz-bg {
+.home-quiz-bg {
   position: absolute;
   inset: 0;
   background-image: url('/src/assets/home-bg.png');
@@ -17,13 +17,13 @@
   background-position: right;
 }
 
-.card-quiz-overlay {
+.home-quiz-overlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-.card-quiz-content {
+.home-quiz-content {
   position: relative;
   color: var(--primary-foreground);
   display: flex;
@@ -32,10 +32,10 @@
   width: 60%;
 }
 
-.card-quiz-text {
+.home-quiz-text {
   font-style: italic;
 }
 
-.card-quiz-footer {
+.home-quiz-footer {
   position: relative;
 }

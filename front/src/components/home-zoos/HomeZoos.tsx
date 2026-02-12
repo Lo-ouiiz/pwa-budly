@@ -17,7 +17,7 @@ type Zoo = {
   photos: string[];
 };
 
-export default function ZooPartnership() {
+export default function HomeZoos() {
   const [zoos, setZoos] = useState<Zoo[]>([]);
   const [loading, setLoading] = useState(true);
 

@@ -1,12 +1,12 @@
-import CardQuiz from '@/components/card-quiz/CardQuiz';
-import ZooPartnership from '@/components/zoo-partnership/ZooPartnership';
+import HomeQuiz from '@/components/home-quiz/HomeQuiz';
+import HomeZoos from '@/components/home-zoos/HomeZoos';
 import './Home.css';
 
 export default function Home() {
   return (
     <div className="home">
-      <CardQuiz />
-      <ZooPartnership />
+      <HomeQuiz />
+      <HomeZoos />
     </div>
   );
 }
