@@ -2,10 +2,16 @@ import { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import './Auth.css';
+import { authStore } from '@/lib/auth';
+import { Navigate } from 'react-router-dom';
 
 export default function Auth() {
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [step, setStep] = useState(1);
+
+  if (authStore.accessToken) {
+    return <Navigate to="/profil" replace />;
+  }
 
   return (
     <section className="auth-section">

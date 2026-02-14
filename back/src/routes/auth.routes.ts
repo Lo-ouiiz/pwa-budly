@@ -36,7 +36,7 @@ router.post("/login", async (req: Request, res: Response) => {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: false,
-    sameSite: "none",
+    sameSite: "lax",
     path: "/auth/refresh",
   });
 
