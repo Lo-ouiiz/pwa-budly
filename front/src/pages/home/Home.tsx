@@ -1,6 +1,6 @@
-import HomeQuiz from '@/components/home-quiz/HomeQuiz';
-import HomeZoos from '@/components/home-zoos/HomeZoos';
-import HomeAnimals from '@/components/home-animals/HomeAnimals';
+import HomeQuiz from '@/pages/home/home-quiz/HomeQuiz';
+import HomeZoos from '@/pages/home/home-zoos/HomeZoos';
+import HomeAnimals from '@/pages/home/home-animals/HomeAnimals';
 import './Home.css';
 
 export default function Home() {
