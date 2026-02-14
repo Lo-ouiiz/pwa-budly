@@ -54,7 +54,6 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   const redirectTo = location.state?.from || '/profil';
 
   const {
@@ -101,6 +100,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
         throw new Error(err.message || 'Erreur lors de la création du compte');
       }
 
+      // connexion automatique
       const loginRes = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -124,11 +124,17 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
     }
   };
 
+  const requiredLabel = (label: string) => (
+    <>
+      {label} <span className="required">*</span>
+    </>
+  );
+
   return (
     <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
       {step === 2 && (
         <button type="button" className="auth-back" onClick={onBack}>
-          <ArrowLeftIcon size={18} weight="bold" />
+          <ArrowLeftIcon size={16} weight="bold" />
           <span>Retour</span>
         </button>
       )}
@@ -136,7 +142,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
       {step === 1 && (
         <>
           <Field>
-            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <FieldLabel htmlFor="email">{requiredLabel('Email')}</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 id="email"
@@ -156,7 +162,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
       {step === 2 && (
         <>
           <Field>
-            <FieldLabel htmlFor="lastName">Nom</FieldLabel>
+            <FieldLabel htmlFor="lastName">{requiredLabel('Nom')}</FieldLabel>
             <InputGroup>
               <InputGroupInput id="lastName" placeholder="Votre nom" {...register('lastName')} />
             </InputGroup>
@@ -164,7 +170,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="firstName">Prénom</FieldLabel>
+            <FieldLabel htmlFor="firstName">{requiredLabel('Prénom')}</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 id="firstName"
@@ -178,7 +184,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="birthDate">Date de naissance</FieldLabel>
+            <FieldLabel htmlFor="birthDate">{requiredLabel('Date de naissance')}</FieldLabel>
             <InputGroup>
               <InputGroupInput id="birthDate" type="date" {...register('birthDate')} />
             </InputGroup>
@@ -188,7 +194,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="password">Mot de passe</FieldLabel>
+            <FieldLabel htmlFor="password">{requiredLabel('Mot de passe')}</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 id="password"
@@ -214,7 +220,9 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="confirmPassword">Confirmer le mot de passe</FieldLabel>
+            <FieldLabel htmlFor="confirmPassword">
+              {requiredLabel('Confirmer le mot de passe')}
+            </FieldLabel>
             <InputGroup>
               <InputGroupInput
                 id="confirmPassword"
