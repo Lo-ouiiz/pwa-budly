@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeftIcon, EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
+import { authStore } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import { Field, FieldLabel } from '@/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 
 type Props = {
   step: number;
@@ -36,28 +38,33 @@ const registerSchemaStep2 = z
         'Le mot de passe doit contenir au moins 8 caractères dont une majuscule, une minuscule, un chiffre et un caractère spécial',
       ),
     confirmPassword: z.string(),
+    email: z.email(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Les mots de passe ne correspondent pas',
     path: ['confirmPassword'],
   });
 
-type Step1Values = z.infer<typeof registerSchemaStep1>;
-type Step2Values = z.infer<typeof registerSchemaStep2>;
+type FormValues = z.infer<typeof registerSchemaStep1> &
+  Partial<z.infer<typeof registerSchemaStep2>>;
 
 export default function RegisterForm({ step, onBack, onNext }: Props) {
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const redirectTo = location.state?.from || '/profil';
 
   const {
     register,
     handleSubmit,
     trigger,
     formState: { errors, isValid },
-  } = useForm<Step1Values | Step2Values>({
+  } = useForm<FormValues>({
     resolver: zodResolver(step === 1 ? registerSchemaStep1 : registerSchemaStep2),
     mode: 'onChange',
-    reValidateMode: 'onChange',
-    defaultValues: {},
   });
 
   const handleNext = async () => {
@@ -65,8 +72,56 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
     if (valid) onNext();
   };
 
-  const onSubmit = (data: Step1Values | Step2Values) => {
-    if (step === 2) console.log('Step 2:', data);
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    if (step === 1) {
+      handleNext();
+      return;
+    }
+
+    setErrorMsg('');
+
+    try {
+      const payload = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        birthDate: data.birthDate,
+        email: data.email,
+        password: data.password,
+        role: 'USER',
+      };
+
+      const res = await fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'Erreur lors de la création du compte');
+      }
+
+      const loginRes = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: data.email, password: data.password }),
+        credentials: 'include',
+      });
+
+      if (!loginRes.ok) {
+        const err = await loginRes.json();
+        throw new Error(err.message || 'Erreur connexion');
+      }
+
+      const json = await loginRes.json();
+      authStore.accessToken = json.accessToken;
+
+      navigate(redirectTo, { replace: true });
+
+      //eslint-disable-next-line
+    } catch (err: any) {
+      setErrorMsg(err.message);
+    }
   };
 
   return (
@@ -185,6 +240,8 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
               <span className="auth-error">{errors.confirmPassword?.message}</span>
             )}
           </Field>
+
+          {errorMsg && <span className="auth-error">{errorMsg}</span>}
 
           <Button type="submit" disabled={!isValid}>
             Créer un compte

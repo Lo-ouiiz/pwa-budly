@@ -54,7 +54,6 @@ export default function LoginForm() {
 
       const json = await res.json();
       authStore.accessToken = json.accessToken;
-      console.log('Login réussi, accessToken:', authStore.accessToken);
 
       navigate(redirectTo, { replace: true });
 

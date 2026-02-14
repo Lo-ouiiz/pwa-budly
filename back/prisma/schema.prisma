@@ -71,10 +71,10 @@ model User {
   email         String    @unique
   passwordHash  String
   birthDate     DateTime
-  street        String
-  postalCode    String
-  city          String
-  country       String
+  street        String?
+  postalCode    String?
+  city          String?
+  country       String?
   phoneNumber   String?
   createdAt     DateTime  @default(now())
 

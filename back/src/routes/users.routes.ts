@@ -1,7 +1,7 @@
-import { Router, Request, Response } from 'express';
-import bcrypt from 'bcrypt';
-import { prisma } from '../lib/prisma.js';
-import { UserRole } from '../../generated/prisma/enums.js';
+import { Router, Request, Response } from "express";
+import bcrypt from "bcrypt";
+import { prisma } from "../lib/prisma.js";
+import { UserRole } from "../../generated/prisma/enums.js";
 
 const router = Router();
 const SALT_ROUNDS = 10;
@@ -23,7 +23,7 @@ const userSelect = {
 };
 
 // GET all users
-router.get('/', async (_req: Request, res: Response) => {
+router.get("/", async (_req: Request, res: Response) => {
   try {
     const users = await prisma.user.findMany({
       select: userSelect,
@@ -31,12 +31,12 @@ router.get('/', async (_req: Request, res: Response) => {
     res.json(users);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // GET user by id
-router.get('/:id', async (req: Request, res: Response) => {
+router.get("/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
@@ -46,49 +46,26 @@ router.get('/:id', async (req: Request, res: Response) => {
     });
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     res.json(user);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // CREATE user
-router.post('/', async (req: Request, res: Response) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    birthDate,
-    street,
-    postalCode,
-    city,
-    country,
-    phoneNumber,
-    traits,
-    role,
-  } = req.body;
+router.post("/", async (req: Request, res: Response) => {
+  const { firstName, lastName, email, password, birthDate, role } = req.body;
 
-  if (
-    !firstName ||
-    !lastName ||
-    !email ||
-    !password ||
-    !birthDate ||
-    !street ||
-    !postalCode ||
-    !city ||
-    !country
-  ) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (!firstName || !lastName || !email || !password || !birthDate || !role) {
+    return res.status(400).json({ error: "Missing required fields" });
   }
 
   if (role && !Object.values(UserRole).includes(role)) {
-    return res.status(400).json({ error: 'Invalid user role' });
+    return res.status(400).json({ error: "Invalid user role" });
   }
 
   try {
@@ -101,12 +78,6 @@ router.post('/', async (req: Request, res: Response) => {
         email,
         passwordHash,
         birthDate: new Date(birthDate),
-        street,
-        postalCode,
-        city,
-        country,
-        phoneNumber,
-        traits,
         role,
       },
       select: userSelect,
@@ -115,15 +86,15 @@ router.post('/', async (req: Request, res: Response) => {
     res.status(201).json(user);
   } catch (err: any) {
     console.error(err);
-    if (err.code === 'P2002') {
-      return res.status(409).json({ error: 'Email already exists' });
+    if (err.code === "P2002") {
+      return res.status(409).json({ error: "Email already exists" });
     }
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // UPDATE user
-router.put('/:id', async (req: Request, res: Response) => {
+router.put("/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const {
     firstName,
@@ -141,7 +112,7 @@ router.put('/:id', async (req: Request, res: Response) => {
   } = req.body;
 
   if (role && !Object.values(UserRole).includes(role)) {
-    return res.status(400).json({ error: 'Invalid user role' });
+    return res.status(400).json({ error: "Invalid user role" });
   }
 
   try {
@@ -175,18 +146,18 @@ router.put('/:id', async (req: Request, res: Response) => {
     res.json(updatedUser);
   } catch (err: any) {
     console.error(err);
-    if (err.code === 'P2025') {
-      return res.status(404).json({ error: 'User not found' });
+    if (err.code === "P2025") {
+      return res.status(404).json({ error: "User not found" });
     }
-    if (err.code === 'P2002') {
-      return res.status(409).json({ error: 'Email already exists' });
+    if (err.code === "P2002") {
+      return res.status(409).json({ error: "Email already exists" });
     }
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // DELETE user
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete("/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
@@ -194,10 +165,10 @@ router.delete('/:id', async (req: Request, res: Response) => {
     res.status(204).send();
   } catch (err: any) {
     console.error(err);
-    if (err.code === 'P2025') {
-      return res.status(404).json({ error: 'User not found' });
+    if (err.code === "P2025") {
+      return res.status(404).json({ error: "User not found" });
     }
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
