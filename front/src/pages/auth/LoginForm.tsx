@@ -5,19 +5,20 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/in
 import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { authStore } from '@/lib/auth';
 import * as z from 'zod';
 
 const loginSchema = z.object({
   email: z.email({ message: 'Email invalide' }),
-  password: z.string().min(8, {
-    message: 'Le mot de passe est requis',
-  }),
+  password: z.string().min(1, { message: 'Le mot de passe est requis' }),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const {
     register,
@@ -28,8 +29,33 @@ export default function LoginForm() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log('Connexion:', data);
+  const onSubmit = async (data: LoginFormValues) => {
+    setLoading(true);
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        credentials: 'include',
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.message || 'Erreur connexion');
+      }
+
+      const json = await res.json();
+      authStore.accessToken = json.accessToken;
+      console.log('Login réussi, accessToken:', authStore.accessToken);
+
+      //eslint-disable-next-line
+    } catch (err: any) {
+      setErrorMsg(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,12 +99,14 @@ export default function LoginForm() {
         {errors.password && <span className="auth-error">{errors.password.message}</span>}
       </Field>
 
+      {errorMsg && <span className="auth-error">{errorMsg}</span>}
+
       <button type="button" className="auth-forgot">
         Mot de passe oublié ?
       </button>
 
-      <Button type="submit" disabled={!isValid}>
-        Se connecter
+      <Button type="submit" disabled={!isValid || loading}>
+        {loading ? 'Connexion...' : 'Se connecter'}
       </Button>
     </form>
   );

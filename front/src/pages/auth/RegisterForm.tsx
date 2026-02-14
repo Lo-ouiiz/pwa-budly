@@ -66,11 +66,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
   };
 
   const onSubmit = (data: Step1Values | Step2Values) => {
-    if (step === 2) {
-      const step2Data = data as Step2Values;
-      console.log('Step 2:', step2Data);
-      // envoyer à l'API
-    }
+    if (step === 2) console.log('Step 2:', data);
   };
 
   return (
@@ -83,21 +79,23 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
       )}
 
       {step === 1 && (
-        <Field>
-          <FieldLabel htmlFor="email">Email</FieldLabel>
-          <InputGroup>
-            <InputGroupInput
-              id="email"
-              type="email"
-              placeholder="email@exemple.com"
-              {...register('email')}
-            />
-          </InputGroup>
-          {'email' in errors && <span className="auth-error">{errors.email?.message}</span>}
+        <>
+          <Field>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <InputGroup>
+              <InputGroupInput
+                id="email"
+                type="email"
+                placeholder="email@exemple.com"
+                {...register('email')}
+              />
+            </InputGroup>
+            {'email' in errors && <span className="auth-error">{errors.email?.message}</span>}
+          </Field>
           <Button type="button" onClick={handleNext} disabled={!isValid}>
             Continuer
           </Button>
-        </Field>
+        </>
       )}
 
       {step === 2 && (
