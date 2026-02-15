@@ -7,6 +7,10 @@
   flex-wrap: wrap;
 }
 
+.pagination > button > span {
+  font-weight: 500;
+}
+
 .pagination-page {
   font-size: 0.875rem;
   color: var(--foreground);

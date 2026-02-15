@@ -17,7 +17,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
       >
-        <ArrowLeftIcon />
+        <ArrowLeftIcon weight="bold" />
         <span className="ml-1 hidden sm:inline">Précédent</span>
       </Button>
       <span className="pagination-page">
@@ -30,7 +30,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
         disabled={currentPage === totalPages}
       >
         <span className="mr-1 hidden sm:inline">Suivant</span>
-        <ArrowRightIcon />
+        <ArrowRightIcon weight="bold" />
       </Button>
     </div>
   );

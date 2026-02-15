@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import type { Animal } from '@/lib/interfaces';
-import AnimalCard from '../animal-card/AnimalCard';
+import AnimalCard from '../../../components/animal-card/AnimalCard';
 import './AnimalGrid.css';
 
 interface AnimalGridProps {

@@ -49,39 +49,46 @@
 }
 
 .home-animals-carousel-item {
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 
 @media (min-width: 640px) {
   .home-animals-carousel-item {
-    flex-basis: 40%;
+    flex-basis: 45%;
   }
 }
 
 @media (min-width: 1024px) {
   .home-animals-carousel-item {
-    flex-basis: 33%;
+    flex-basis: 30%;
   }
 }
 
-.home-animals-card {
-  height: 250px;
-  border-radius: 1rem;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  border: 2px solid var(--border);
+@media (min-width: 1280px) {
+  .home-animals-carousel-item {
+    flex-basis: 23%;
+  }
+}
+
+.home-animals-see-more-card {
+  height: 280px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
 }
 
-.home-animals-card-footer {
-  width: 100%;
-  background-color: white;
-  padding: 0.75rem 1rem;
+@media (min-width: 640px) {
+  .home-animals-see-more-card {
+    height: 300px;
+  }
 }
 
-.home-animals-card-title {
-  font-weight: 600;
-  color: var(--foreground);
+@media (min-width: 1024px) {
+  .home-animals-see-more-card {
+    height: 350px;
+  }
 }
