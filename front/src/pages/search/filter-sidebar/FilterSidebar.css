@@ -143,7 +143,30 @@
   color: var(--primary);
 }
 
+.search-section-desktop {
+  display: none;
+}
+
+.search-label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.search-input-wrapper-desktop {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
 @media (min-width: 640px) {
+  .search-section-desktop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+
   .filters-sidebar {
     position: sticky;
     top: 4rem;

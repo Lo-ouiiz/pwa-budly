@@ -6,14 +6,14 @@ import { requireRole } from "../middlewares/role.middleware.js";
 const router = Router();
 
 // GET all animals
-// GET all animals
 router.get("/", async (req: Request, res: Response) => {
   try {
     const page = Math.max(Number(req.query.page) || 1, 1);
     const limit = Math.max(Number(req.query.limit) || 20, 1);
     const skip = (page - 1) * limit;
 
-    // Gérer les filtres multiples
+    const searchQuery = req.query.search ? String(req.query.search) : undefined;
+
     const speciesNames = req.query.species
       ? Array.isArray(req.query.species)
         ? req.query.species.map(String)
@@ -32,20 +32,46 @@ router.get("/", async (req: Request, res: Response) => {
         : [String(req.query.conservationStatus)]
       : undefined;
 
-    const zooId = req.query.zooId ? Number(req.query.zooId) : undefined;
+    const zooIds = req.query.zooId
+      ? Array.isArray(req.query.zooId)
+        ? req.query.zooId.map(Number)
+        : [Number(req.query.zooId)]
+      : undefined;
+
     const traits = req.query.traits
-      ? String(req.query.traits).split(",")
+      ? Array.isArray(req.query.traits)
+        ? req.query.traits.map(String)
+        : [String(req.query.traits)]
       : undefined;
-    const ageRange = req.query.age
-      ? String(req.query.age).split("-").map(Number)
-      : undefined;
+
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
     const where: any = { deletedAt: null };
 
-    // Filtres multiples avec OR
+    if (searchQuery) {
+      where.OR = [
+        {
+          name: {
+            contains: searchQuery,
+            mode: "insensitive",
+          },
+        },
+        {
+          species: {
+            name: {
+              contains: searchQuery,
+              mode: "insensitive",
+            },
+          },
+        },
+      ];
+    }
+
     if (speciesNames && speciesNames.length > 0) {
-      where.species = { name: { in: speciesNames } };
+      where.species = {
+        ...where.species,
+        name: { in: speciesNames },
+      };
     }
     if (genders && genders.length > 0) {
       where.gender = { in: genders };
@@ -53,12 +79,11 @@ router.get("/", async (req: Request, res: Response) => {
     if (conservationStatuses && conservationStatuses.length > 0) {
       where.conservationStatus = { in: conservationStatuses };
     }
-    if (zooId) {
-      where.zooId = zooId;
+    if (zooIds && zooIds.length > 0) {
+      where.zooId = { in: zooIds };
     }
-    if (traits) where.traits = { hasSome: traits };
-    if (ageRange && ageRange.length === 2) {
-      where.age = { gte: ageRange[0], lte: ageRange[1] };
+    if (traits && traits.length > 0) {
+      where.traits = { hasSome: traits };
     }
 
     const [total, animals] = await Promise.all([
@@ -68,7 +93,7 @@ router.get("/", async (req: Request, res: Response) => {
         skip,
         take: limit,
         orderBy: { name: sortOrder },
-        include: { species: true, subSpecies: true },
+        include: { species: true, subSpecies: true, zoo: true },
       }),
     ]);
 

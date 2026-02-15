@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   Accordion,
@@ -13,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { XIcon, CaretDown } from '@phosphor-icons/react';
+import { XIcon, CaretDownIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import './FilterSidebar.css';
 
 interface Species {
@@ -37,6 +38,7 @@ interface Filters {
 interface FilterSidebarProps {
   filters: Filters;
   sortOrder: 'asc' | 'desc';
+  searchQuery: string;
   availableSpecies: Species[];
   availableZoos: Zoo[];
   loadingSpecies: boolean;
@@ -44,6 +46,7 @@ interface FilterSidebarProps {
   showFilters: boolean;
   onFilterChange: (filterType: keyof Filters, value: string | number) => void;
   onSortOrderChange: (order: 'asc' | 'desc') => void;
+  onSearchChange: (value: string) => void;
   onClearFilters: () => void;
   onClose: () => void;
 }
@@ -93,6 +96,7 @@ const PERSONALITY_TRAITS = [
 export default function FilterSidebar({
   filters,
   sortOrder,
+  searchQuery,
   availableSpecies,
   availableZoos,
   loadingSpecies,
@@ -100,6 +104,7 @@ export default function FilterSidebar({
   showFilters,
   onFilterChange,
   onSortOrderChange,
+  onSearchChange,
   onClearFilters,
   onClose,
 }: FilterSidebarProps) {
@@ -108,7 +113,8 @@ export default function FilterSidebar({
     filters.gender.length > 0 ||
     filters.conservationStatus.length > 0 ||
     filters.zoos.length > 0 ||
-    filters.traits.length > 0;
+    filters.traits.length > 0 ||
+    searchQuery.length > 0;
 
   return (
     <aside className={`filters-sidebar ${showFilters ? 'filters-sidebar-open' : ''}`}>
@@ -120,6 +126,20 @@ export default function FilterSidebar({
       </div>
 
       <div className="filters-content">
+        <div className="search-section-desktop">
+          <span className="search-label">Rechercher</span>
+          <div className="search-input-wrapper-desktop">
+            <MagnifyingGlassIcon className="search-input-icon" weight="bold" />
+            <Input
+              type="text"
+              placeholder="Animal ou espèce..."
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="search-input"
+            />
+          </div>
+        </div>
+
         <div className="sort-section">
           <span className="sort-label">Trier les animaux</span>
           <Select
@@ -140,7 +160,6 @@ export default function FilterSidebar({
           type="multiple"
           defaultValue={['species', 'gender', 'conservation', 'zoos', 'traits']}
         >
-          {/* Filtre Espèces */}
           <AccordionItem value="species">
             <AccordionTrigger className="accordion-trigger">
               <div className="accordion-trigger-content">
@@ -149,7 +168,7 @@ export default function FilterSidebar({
                   <span className="filter-count">({filters.species.length})</span>
                 )}
               </div>
-              <CaretDown className="accordion-chevron" weight="bold" />
+              <CaretDownIcon className="accordion-chevron" weight="bold" />
             </AccordionTrigger>
             <AccordionContent>
               <div className="checkbox-list">
@@ -172,7 +191,6 @@ export default function FilterSidebar({
             </AccordionContent>
           </AccordionItem>
 
-          {/* Filtre Zoos */}
           <AccordionItem value="zoos">
             <AccordionTrigger className="accordion-trigger">
               <div className="accordion-trigger-content">
@@ -181,7 +199,7 @@ export default function FilterSidebar({
                   <span className="filter-count">({filters.zoos.length})</span>
                 )}
               </div>
-              <CaretDown className="accordion-chevron" weight="bold" />
+              <CaretDownIcon className="accordion-chevron" weight="bold" />
             </AccordionTrigger>
             <AccordionContent>
               <div className="checkbox-list">
@@ -204,7 +222,6 @@ export default function FilterSidebar({
             </AccordionContent>
           </AccordionItem>
 
-          {/* Filtre Genre */}
           <AccordionItem value="gender">
             <AccordionTrigger className="accordion-trigger">
               <div className="accordion-trigger-content">
@@ -213,7 +230,7 @@ export default function FilterSidebar({
                   <span className="filter-count">({filters.gender.length})</span>
                 )}
               </div>
-              <CaretDown className="accordion-chevron" weight="bold" />
+              <CaretDownIcon className="accordion-chevron" weight="bold" />
             </AccordionTrigger>
             <AccordionContent>
               <div className="checkbox-list">
@@ -230,7 +247,6 @@ export default function FilterSidebar({
             </AccordionContent>
           </AccordionItem>
 
-          {/* Filtre Statut de conservation */}
           <AccordionItem value="conservation">
             <AccordionTrigger className="accordion-trigger">
               <div className="accordion-trigger-content">
@@ -239,7 +255,7 @@ export default function FilterSidebar({
                   <span className="filter-count">({filters.conservationStatus.length})</span>
                 )}
               </div>
-              <CaretDown className="accordion-chevron" weight="bold" />
+              <CaretDownIcon className="accordion-chevron" weight="bold" />
             </AccordionTrigger>
             <AccordionContent>
               <div className="checkbox-list">
@@ -256,7 +272,6 @@ export default function FilterSidebar({
             </AccordionContent>
           </AccordionItem>
 
-          {/* Filtre Traits de personnalité */}
           <AccordionItem value="traits">
             <AccordionTrigger className="accordion-trigger">
               <div className="accordion-trigger-content">
@@ -265,7 +280,7 @@ export default function FilterSidebar({
                   <span className="filter-count">({filters.traits.length})</span>
                 )}
               </div>
-              <CaretDown className="accordion-chevron" weight="bold" />
+              <CaretDownIcon className="accordion-chevron" weight="bold" />
             </AccordionTrigger>
             <AccordionContent>
               <div className="checkbox-list">

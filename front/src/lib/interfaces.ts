@@ -23,6 +23,7 @@ export interface Animal {
   traits: string[];
   weight: number;
   zooId: number;
+  zoo: { name: string };
 }
 
 export interface RequestDataAnimals {
