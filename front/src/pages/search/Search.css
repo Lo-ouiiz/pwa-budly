@@ -1,108 +1,87 @@
 .search-animals-section {
   width: 100%;
-  padding: 1rem 1rem 100px 1rem;
+  padding: 1rem;
+  padding-bottom: 100px;
 }
 
-.animal-list {
-  display: grid;
+.search-header-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
-.animal-card {
-  border: 2px solid var(--border);
-  border-radius: 1rem;
-  overflow: hidden;
-  background-color: white;
+.search-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary);
+}
+
+.search-title-desktop {
+  display: none;
+}
+
+.filter-toggle-mobile {
   display: flex;
-  flex-direction: column;
-  height: 250px;
-  transition: transform 0.2s;
-}
-
-.animal-card:hover {
-  transform: translateY(-5px);
-}
-
-.animal-card-image {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
-
-.animal-card-body {
-  padding: 0.75rem 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.animal-card-title {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.animal-card-info {
-  font-size: 0.85rem;
-}
-
-.animal-card-skeleton {
-  height: 300px;
-  border-radius: 1rem;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
 }
 
-.pagination button {
-  padding: 0.25rem 0.5rem;
-  border: 2px solid var(--input);
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
+.filter-badge {
+  background-color: var(--primary-foreground);
+  color: var(--primary);
+  border-radius: var(--radius-4xl);
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.25rem;
 }
 
-.pagination button:hover:not(:disabled) {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  border: 2px solid var(--primary);
+.filters-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search-content {
+  display: flex;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.search-main {
+  flex: 1;
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
-  .animal-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  .search-header-mobile {
+    display: none;
   }
 
-  .animal-card {
-    height: 280px;
+  .search-title-desktop {
+    display: block;
+    margin-bottom: 1.5rem;
   }
 
-  .animal-card-image {
-    height: 220px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .animal-list {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .filters-overlay {
+    display: none;
   }
 
-  .animal-card {
-    height: 300px;
-  }
-
-  .animal-card-image {
-    height: 240px;
+  .search-content {
+    gap: 2rem;
   }
 }
