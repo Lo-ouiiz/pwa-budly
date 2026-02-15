@@ -4,7 +4,7 @@ import { authStore, initAuth } from './lib/auth';
 import Loader from './components/loader/Loader';
 import Layout from './components/layout/Layout';
 import Home from './pages/home/Home';
-import Search from './pages/Search';
+import Search from './pages/search/Search';
 import Animals from './pages/Animals';
 import Profile from './pages/Profile';
 import Auth from './pages/auth/Auth';

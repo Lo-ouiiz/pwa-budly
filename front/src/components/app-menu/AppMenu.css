@@ -113,12 +113,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  font-size: 0.75rem;
   color: var(--primary-foreground);
   text-decoration: none;
   transition:
     color 0.15s ease,
     opacity 0.15s ease;
+}
+
+.nav-mobile-item span {
+  font-size: 0.75rem;
 }
 
 .nav-mobile-item.active {
