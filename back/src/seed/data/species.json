@@ -1,0 +1,424 @@
+[
+  {
+    "species": "Lion",
+    "subspecies": ["Lion d'Afrique", "Lion d'Asie"]
+  },
+  {
+    "species": "Tigre",
+    "subspecies": [
+      "Tigre du Bengale",
+      "Tigre de Sibérie",
+      "Tigre de Sumatra",
+      "Tigre de Malaisie"
+    ]
+  },
+  {
+    "species": "Léopard",
+    "subspecies": ["Léopard d'Afrique", "Léopard d'Asie"]
+  },
+  {
+    "species": "Panthère des neiges",
+    "subspecies": []
+  },
+  {
+    "species": "Jaguar",
+    "subspecies": []
+  },
+  {
+    "species": "Guépard",
+    "subspecies": ["Guépard d'Afrique", "Guépard d'Asie"]
+  },
+  {
+    "species": "Puma",
+    "subspecies": []
+  },
+  {
+    "species": "Serval",
+    "subspecies": []
+  },
+  {
+    "species": "Caracal",
+    "subspecies": []
+  },
+  {
+    "species": "Ocelot",
+    "subspecies": []
+  },
+  {
+    "species": "Chat marbré",
+    "subspecies": []
+  },
+  {
+    "species": "Chat pêcheur",
+    "subspecies": []
+  },
+  {
+    "species": "Lynx",
+    "subspecies": ["Lynx boréal", "Lynx ibérique", "Lynx roux"]
+  },
+  {
+    "species": "Éléphant",
+    "subspecies": ["Éléphant d'Afrique", "Éléphant d'Asie"]
+  },
+  {
+    "species": "Rhinocéros",
+    "subspecies": [
+      "Rhinocéros blanc",
+      "Rhinocéros noir",
+      "Rhinocéros indien",
+      "Rhinocéros de Sumatra"
+    ]
+  },
+  {
+    "species": "Hippopotame",
+    "subspecies": ["Hippopotame commun", "Hippopotame pygmée"]
+  },
+  {
+    "species": "Girafe",
+    "subspecies": ["Girafe masaï", "Girafe réticulée", "Girafe de Nubie"]
+  },
+  {
+    "species": "Zèbre",
+    "subspecies": ["Zèbre des plaines", "Zèbre de Grévy", "Zèbre de montagne"]
+  },
+  {
+    "species": "Bison",
+    "subspecies": ["Bison d'Europe", "Bison d'Amérique"]
+  },
+  {
+    "species": "Buffle",
+    "subspecies": ["Buffle d'Afrique", "Buffle d'Asie"]
+  },
+  {
+    "species": "Antilope",
+    "subspecies": ["Addax", "Oryx", "Gazelle de Grant", "Gazelle de Thomson"]
+  },
+  {
+    "species": "Gnou",
+    "subspecies": ["Gnou bleu", "Gnou noir"]
+  },
+  {
+    "species": "Okapi",
+    "subspecies": []
+  },
+  {
+    "species": "Ours",
+    "subspecies": [
+      "Ours brun",
+      "Ours polaire",
+      "Ours noir d'Amérique",
+      "Ours malais",
+      "Ours à lunettes"
+    ]
+  },
+  {
+    "species": "Panda",
+    "subspecies": ["Panda géant", "Panda roux"]
+  },
+  {
+    "species": "Loup",
+    "subspecies": ["Loup gris", "Loup arctique", "Loup d'Europe"]
+  },
+  {
+    "species": "Raton laveur",
+    "subspecies": []
+  },
+  {
+    "species": "Glouton",
+    "subspecies": []
+  },
+  {
+    "species": "Gorille",
+    "subspecies": ["Gorille des plaines occidentales", "Gorille des montagnes"]
+  },
+  {
+    "species": "Chimpanzé",
+    "subspecies": []
+  },
+  {
+    "species": "Bonobo",
+    "subspecies": []
+  },
+  {
+    "species": "Orang-outan",
+    "subspecies": ["Orang-outan de Bornéo", "Orang-outan de Sumatra"]
+  },
+  {
+    "species": "Gibbon",
+    "subspecies": ["Gibbon à mains blanches", "Siamang"]
+  },
+  {
+    "species": "Babouin",
+    "subspecies": ["Babouin olive", "Babouin hamadryas"]
+  },
+  {
+    "species": "Macaque",
+    "subspecies": ["Macaque japonais", "Macaque crabier", "Macaque de Barbarie"]
+  },
+  {
+    "species": "Lémurien",
+    "subspecies": ["Lémur catta", "Vari noir et blanc", "Sifaka"]
+  },
+  {
+    "species": "Crocodile",
+    "subspecies": ["Crocodile du Nil", "Crocodile marin", "Crocodile américain"]
+  },
+  {
+    "species": "Alligator",
+    "subspecies": ["Alligator d'Amérique", "Alligator de Chine"]
+  },
+  {
+    "species": "Caïman",
+    "subspecies": ["Caïman à lunettes", "Caïman noir"]
+  },
+  {
+    "species": "Varan",
+    "subspecies": ["Varan de Komodo", "Varan du Nil"]
+  },
+  {
+    "species": "Iguane",
+    "subspecies": ["Iguane vert", "Iguane des Petites Antilles"]
+  },
+  {
+    "species": "Python",
+    "subspecies": ["Python royal", "Python réticulé"]
+  },
+  {
+    "species": "Boa",
+    "subspecies": ["Boa constrictor"]
+  },
+  {
+    "species": "Tortue géante",
+    "subspecies": [
+      "Tortue géante des Seychelles",
+      "Tortue géante des Galápagos",
+      "Tortue géante d'Aldabra"
+    ]
+  },
+  {
+    "species": "Aigle",
+    "subspecies": ["Aigle royal", "Aigle des steppes", "Aigle pêcheur"]
+  },
+  {
+    "species": "Vautour",
+    "subspecies": [
+      "Vautour fauve",
+      "Vautour moine",
+      "Vautour percnoptère",
+      "Condor des Andes"
+    ]
+  },
+  {
+    "species": "Faucon",
+    "subspecies": ["Faucon pèlerin", "Faucon crécerelle", "Faucon sacre"]
+  },
+  {
+    "species": "Chouette",
+    "subspecies": ["Chouette effraie", "Chouette hulotte"]
+  },
+  {
+    "species": "Hibou",
+    "subspecies": ["Hibou grand-duc", "Hibou des neiges"]
+  },
+  {
+    "species": "Perroquet",
+    "subspecies": [
+      "Ara bleu",
+      "Ara rouge",
+      "Ara hyacinthe",
+      "Perroquet gris du Gabon",
+      "Amazone à front bleu"
+    ]
+  },
+  {
+    "species": "Cacatoès",
+    "subspecies": ["Cacatoès blanc", "Cacatoès à huppe jaune"]
+  },
+  {
+    "species": "Perruche",
+    "subspecies": ["Perruche ondulée", "Perruche à collier"]
+  },
+  {
+    "species": "Toucan",
+    "subspecies": ["Toucan toco", "Toucan à carène"]
+  },
+  {
+    "species": "Calao",
+    "subspecies": ["Calao terrestre", "Calao à casque"]
+  },
+  {
+    "species": "Autruche",
+    "subspecies": []
+  },
+  {
+    "species": "Émeu",
+    "subspecies": []
+  },
+  {
+    "species": "Casoar",
+    "subspecies": ["Casoar à casque"]
+  },
+  {
+    "species": "Manchot",
+    "subspecies": [
+      "Manchot empereur",
+      "Manchot royal",
+      "Manchot de Humboldt",
+      "Manchot du Cap"
+    ]
+  },
+  {
+    "species": "Pingouin",
+    "subspecies": [
+      "Pingouin royal",
+      "Manchot empereur",
+      "Manchot royal",
+      "Manchot de Humboldt",
+      "Manchot du Cap"
+    ]
+  },
+  {
+    "species": "Flamant",
+    "subspecies": ["Flamant rose", "Flamant nain"]
+  },
+  {
+    "species": "Pélican",
+    "subspecies": ["Pélican blanc", "Pélican frisé"]
+  },
+  {
+    "species": "Cigogne",
+    "subspecies": ["Cigogne blanche", "Cigogne noire"]
+  },
+  {
+    "species": "Grue",
+    "subspecies": ["Grue cendrée", "Grue du Japon"]
+  },
+  {
+    "species": "Ibis",
+    "subspecies": ["Ibis sacré", "Ibis rouge"]
+  },
+  {
+    "species": "Spatule",
+    "subspecies": ["Spatule blanche"]
+  },
+  {
+    "species": "Paon",
+    "subspecies": ["Paon bleu", "Paon vert"]
+  },
+  {
+    "species": "Faisan",
+    "subspecies": ["Faisan doré", "Faisan argenté"]
+  },
+  {
+    "species": "Dindon",
+    "subspecies": []
+  },
+  {
+    "species": "Suricate",
+    "subspecies": []
+  },
+  {
+    "species": "Mangouste",
+    "subspecies": ["Mangouste jaune", "Mangouste naine"]
+  },
+  {
+    "species": "Fennec",
+    "subspecies": []
+  },
+  {
+    "species": "Renard",
+    "subspecies": ["Renard roux", "Renard polaire", "Renard argenté"]
+  },
+  {
+    "species": "Chacal",
+    "subspecies": ["Chacal doré", "Chacal à dos noir"]
+  },
+  {
+    "species": "Hyène",
+    "subspecies": ["Hyène tachetée", "Hyène rayée", "Hyène brune"]
+  },
+  {
+    "species": "Raton laveur",
+    "subspecies": []
+  },
+  {
+    "species": "Coati",
+    "subspecies": []
+  },
+  {
+    "species": "Blaireau",
+    "subspecies": ["Blaireau européen", "Blaireau d'Amérique"]
+  },
+  {
+    "species": "Loutre",
+    "subspecies": ["Loutre d'Europe", "Loutre géante", "Loutre de mer"]
+  },
+  {
+    "species": "Tapir",
+    "subspecies": ["Tapir terrestre", "Tapir de Malaisie"]
+  },
+  {
+    "species": "Okapi",
+    "subspecies": []
+  },
+  {
+    "species": "Antilope",
+    "subspecies": ["Gazelle de Thomson", "Gazelle de Grant", "Addax", "Oryx"]
+  },
+  {
+    "species": "Watusi",
+    "subspecies": []
+  },
+  {
+    "species": "Kangourou",
+    "subspecies": ["Kangourou roux", "Kangourou gris"]
+  },
+  {
+    "species": "Wallaby",
+    "subspecies": []
+  },
+  {
+    "species": "Koala",
+    "subspecies": []
+  },
+  {
+    "species": "Wombat",
+    "subspecies": []
+  },
+  {
+    "species": "Porc-épic",
+    "subspecies": ["Porc-épic africain", "Porc-épic d'Amérique"]
+  },
+  {
+    "species": "Pécari",
+    "subspecies": []
+  },
+  {
+    "species": "Sanglier",
+    "subspecies": []
+  },
+  {
+    "species": "Paresseux",
+    "subspecies": ["Paresseux à deux doigts", "Paresseux à trois doigts"]
+  },
+  {
+    "species": "Fourmilier",
+    "subspecies": ["Fourmilier géant"]
+  },
+  {
+    "species": "Tatou",
+    "subspecies": []
+  },
+  {
+    "species": "Mouflon",
+    "subspecies": []
+  },
+  {
+    "species": "Chèvre",
+    "subspecies": ["Chèvre naine"]
+  },
+  {
+    "species": "Mouton",
+    "subspecies": []
+  }
+]

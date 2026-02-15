@@ -106,8 +106,6 @@ model Animal {
   name                   String
   slug                   String    @unique
   photos                 String[]
-  species                String
-  subSpecies             String?
   age                    Int
   gender                 String
   conservationStatus     ConservationStatus
@@ -124,14 +122,23 @@ model Animal {
   sponsorshipImpact      String?
   deletedAt              DateTime?
 
+  speciesId              Int
+  subSpeciesId           Int?
+
+  species                Species    @relation(fields: [speciesId], references: [id])
+  subSpecies             SubSpecies? @relation(fields: [subSpeciesId], references: [id])
+
   zooId                  Int
-  zoo                    Zoo             @relation(fields: [zooId], references: [id])
+  zoo                    Zoo        @relation(fields: [zooId], references: [id])
 
   traits                 PersonalityTrait[]
   sponsorships           Sponsorship[]
 
   @@index([zooId])
+  @@index([speciesId])
+  @@index([subSpeciesId])
 }
+
 
 model SponsorshipPlan {
   id                Int       @id @default(autoincrement())
@@ -191,4 +198,24 @@ model Invoice {
 
   @@index([userId])
   @@index([sponsorshipId])
+}
+
+model Species {
+  id        Int          @id @default(autoincrement())
+  name      String       @unique
+  createdAt DateTime     @default(now())
+
+  subspecies SubSpecies[]
+  animals    Animal[]
+}
+
+model SubSpecies {
+  id        Int      @id @default(autoincrement())
+  name      String
+  speciesId Int
+
+  species   Species  @relation(fields: [speciesId], references: [id])
+  animals   Animal[]
+
+  @@unique([name, speciesId])
 }
