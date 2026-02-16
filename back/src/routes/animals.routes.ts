@@ -20,10 +20,13 @@ router.get("/", async (req: Request, res: Response) => {
         : [String(req.query.species)]
       : undefined;
 
+    const capitalize = (str: string) =>
+      str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
     const genders = req.query.gender
       ? Array.isArray(req.query.gender)
-        ? req.query.gender.map(String)
-        : [String(req.query.gender)]
+        ? req.query.gender.map((g) => capitalize(String(g)))
+        : [capitalize(String(req.query.gender))]
       : undefined;
 
     const conservationStatuses = req.query.conservationStatus
@@ -73,15 +76,19 @@ router.get("/", async (req: Request, res: Response) => {
         name: { in: speciesNames },
       };
     }
+
     if (genders && genders.length > 0) {
       where.gender = { in: genders };
     }
+
     if (conservationStatuses && conservationStatuses.length > 0) {
       where.conservationStatus = { in: conservationStatuses };
     }
+
     if (zooIds && zooIds.length > 0) {
       where.zooId = { in: zooIds };
     }
+
     if (traits && traits.length > 0) {
       where.traits = { hasSome: traits };
     }
