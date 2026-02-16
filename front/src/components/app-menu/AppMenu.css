@@ -13,6 +13,10 @@
   background-color: var(--background);
 }
 
+.nav-desktop img {
+  width: 125px;
+}
+
 @media (min-width: 768px) {
   .nav-desktop {
     display: flex;
@@ -76,6 +80,10 @@
   border-bottom: 1px solid var(--border);
   color: var(--foreground);
   font-weight: bold;
+}
+
+.nav-mobile-top img {
+  width: 125px;
 }
 
 @media (min-width: 768px) {
