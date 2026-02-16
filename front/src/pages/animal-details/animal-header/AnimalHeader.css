@@ -1,0 +1,22 @@
+.animal-header-zoo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.animal-header-zoo svg {
+  color: var(--primary);
+}
+
+.animal-header-zoo div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.animal-header-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

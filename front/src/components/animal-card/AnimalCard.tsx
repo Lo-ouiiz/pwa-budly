@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Animal } from '@/lib/interfaces';
 import { PawPrintIcon, MapPinIcon, ArrowRightIcon } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,7 @@ interface AnimalCardProps {
 
 export default function AnimalCard({ animal }: AnimalCardProps) {
   return (
-    <div className="animal-card">
+    <Link to={`/animal/${animal.slug}`} state={{ animalId: animal.id }} className="animal-card">
       <div
         className="animal-card-image"
         style={{
@@ -32,6 +33,6 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
           <ArrowRightIcon weight="bold" />
         </Button>
       </div>
-    </div>
+    </Link>
   );
 }

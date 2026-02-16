@@ -115,6 +115,7 @@ router.get("/:id", async (req: Request, res: Response) => {
   try {
     const animal = await prisma.animal.findFirst({
       where: { id, deletedAt: null },
+      include: { species: true, subSpecies: true, zoo: true },
     });
     if (!animal) return res.status(404).json({ error: "Animal not found" });
     res.json(animal);

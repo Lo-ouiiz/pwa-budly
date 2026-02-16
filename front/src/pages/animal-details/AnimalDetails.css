@@ -1,0 +1,116 @@
+.animal-detail {
+  padding-bottom: 125px;
+}
+
+.animal-detail-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.animal-detail-back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  border-radius: 99px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+}
+
+.animal-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.animal-detail-sponsor-footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1rem;
+  background: linear-gradient(to top, var(--background) 100%);
+}
+
+.animal-detail-sponsor-button {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.animal-detail-not-found {
+  margin: 4rem auto;
+  text-align: center;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+@media (min-width: 769px) {
+  .animal-detail {
+    display: flex;
+    overflow: hidden;
+    padding-bottom: 0;
+  }
+
+  .animal-detail-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+    max-height: none;
+    min-height: auto;
+  }
+
+  .animal-detail-body {
+    margin-left: 50vw;
+    width: 50vw;
+    overflow-y: auto;
+    padding: 1rem;
+    padding-bottom: 80px;
+  }
+
+  .animal-detail-sponsor-footer {
+    position: fixed;
+    left: 50vw;
+    right: 0;
+    width: 50vw;
+    bottom: 0;
+  }
+
+  .animal-detail-back-button {
+    position: fixed;
+    top: 4.5rem;
+    left: 1rem;
+    z-index: 60;
+  }
+}
+
+@media (max-width: 768px) {
+  .animal-detail-hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .animal-detail-sponsor-footer {
+    bottom: 70px;
+  }
+
+  .back-button-text {
+    display: none;
+  }
+
+  .animal-detail-back-button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

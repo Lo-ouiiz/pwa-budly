@@ -9,6 +9,7 @@ import Animals from './pages/Animals';
 import Profile from './pages/Profile';
 import Auth from './pages/auth/Auth';
 import NotFound from './pages/NotFound';
+import AnimalDetail from './pages/animal-details/AnimalDetails';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   if (!authStore.isReady) return <Loader />;
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="recherche" element={<Search />} />
+          <Route path="animal/:slug" element={<AnimalDetail />} />
           <Route
             path="animaux"
             element={

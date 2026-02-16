@@ -1,0 +1,21 @@
+.animal-characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.characteristic-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.characteristic-label {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .animal-characteristics {
+    grid-template-columns: 1fr;
+  }
+}
