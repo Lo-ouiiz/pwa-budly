@@ -7,7 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import AnimalCarousel from './animal-carousel/AnimalCarousel';
 import AnimalHeader from './animal-header/AnimalHeader';
 import AnimalCharacteristics from './animal-characteristics/AnimalCharacteristics';
-import ConservationStatus from './conservation-status/ConservationStatus';
+import ConservationStatus from '../../components/conservation-status/ConservationStatus';
 import './AnimalDetails.css';
 
 export default function AnimalDetail() {
