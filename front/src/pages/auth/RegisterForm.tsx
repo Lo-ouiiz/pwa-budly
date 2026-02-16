@@ -133,10 +133,10 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
   return (
     <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
       {step === 2 && (
-        <button type="button" className="auth-back" onClick={onBack}>
+        <Button variant="outline" type="button" className="auth-back" onClick={onBack}>
           <ArrowLeftIcon size={16} weight="bold" />
           <span>Retour</span>
-        </button>
+        </Button>
       )}
 
       {step === 1 && (
