@@ -1,8 +1,10 @@
+export type ConservationStatus = 'LC' | 'NT' | 'VU' | 'EN' | 'CR';
+
 export interface Animal {
   age: number;
   birthDate: string;
   birthPlace: string;
-  conservationStatus: string;
+  conservationStatus: ConservationStatus;
   description: string;
   diet: string;
   gender: string;

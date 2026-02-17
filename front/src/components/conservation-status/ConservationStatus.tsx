@@ -1,9 +1,8 @@
+import { type ConservationStatus } from '../../lib/interfaces';
 import './ConservationStatus.css';
 
-type ConservationStatusType = 'LC' | 'NT' | 'VU' | 'EN' | 'CR';
-
 interface ConservationStatusProps {
-  status: ConservationStatusType;
+  status: ConservationStatus;
 }
 
 export default function ConservationStatus({ status }: ConservationStatusProps) {
