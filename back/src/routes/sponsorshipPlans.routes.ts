@@ -1,48 +1,76 @@
-import { Router, Request, Response } from 'express';
-import { prisma } from '../lib/prisma.js';
-import { auth } from '../middlewares/auth.middleware.js';
-import { requireRole } from '../middlewares/role.middleware.js';
+import { Router, Request, Response } from "express";
+import { prisma } from "../lib/prisma.js";
+import { auth } from "../middlewares/auth.middleware.js";
+import { requireRole } from "../middlewares/role.middleware.js";
 
 const router = Router();
 
 // GET all plans
-router.get('/', async (_req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
+    const zooId = req.query.zooId ? Number(req.query.zooId) : undefined;
+
+    const where: any = { deletedAt: null };
+
+    if (zooId) {
+      where.zooId = zooId;
+    }
+
     const plans = await prisma.sponsorshipPlan.findMany({
-      where: { deletedAt: null },
+      where,
+      orderBy: {
+        basePrice: "asc",
+      },
     });
+
     res.json(plans);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // GET plan by id
-router.get('/:id', async (req: Request, res: Response) => {
+router.get("/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   try {
     const plan = await prisma.sponsorshipPlan.findFirst({
       where: { id, deletedAt: null },
     });
-    if (!plan) return res.status(404).json({ error: 'Sponsorship plan not found' });
+    if (!plan)
+      return res.status(404).json({ error: "Sponsorship plan not found" });
     res.json(plan);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // CREATE plan
 router.post(
-  '/',
+  "/",
   auth,
-  requireRole('ZOO_ADMIN'), 
+  requireRole("ZOO_ADMIN"),
   async (req: Request, res: Response) => {
-    const { name, description, basePrice, taxReducedPrice, benefits, durationMonths, zooId } = req.body;
+    const {
+      name,
+      description,
+      basePrice,
+      taxReducedPrice,
+      benefits,
+      durationMonths,
+      zooId,
+    } = req.body;
 
-    if (!name || !description || basePrice == null || !benefits || !durationMonths || !zooId) {
-      return res.status(400).json({ error: 'Missing required fields' });
+    if (
+      !name ||
+      !description ||
+      basePrice == null ||
+      !benefits ||
+      !durationMonths ||
+      !zooId
+    ) {
+      return res.status(400).json({ error: "Missing required fields" });
     }
 
     try {
@@ -60,16 +88,16 @@ router.post(
       res.status(201).json(plan);
     } catch (err) {
       console.error(err);
-      res.status(500).json({ error: 'Internal server error' });
+      res.status(500).json({ error: "Internal server error" });
     }
-  }
+  },
 );
 
 // UPDATE plan
 router.put(
-  '/:id',
+  "/:id",
   auth,
-  requireRole('ZOO_ADMIN'),
+  requireRole("ZOO_ADMIN"),
   async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     const {
@@ -96,17 +124,18 @@ router.put(
       res.json(updatedPlan);
     } catch (err: any) {
       console.error(err);
-      if (err.code === 'P2025') return res.status(404).json({ error: 'Sponsorship plan not found' });
-      res.status(500).json({ error: 'Internal server error' });
+      if (err.code === "P2025")
+        return res.status(404).json({ error: "Sponsorship plan not found" });
+      res.status(500).json({ error: "Internal server error" });
     }
-  }
+  },
 );
 
 // DELETE plan
 router.delete(
-  '/:id',
+  "/:id",
   auth,
-  requireRole('ZOO_ADMIN'),
+  requireRole("ZOO_ADMIN"),
   async (req: Request, res: Response) => {
     const id = Number(req.params.id);
     try {
@@ -117,10 +146,11 @@ router.delete(
       res.status(204).send();
     } catch (err: any) {
       console.error(err);
-      if (err.code === 'P2025') return res.status(404).json({ error: 'Sponsorship plan not found' });
-      res.status(500).json({ error: 'Internal server error' });
+      if (err.code === "P2025")
+        return res.status(404).json({ error: "Sponsorship plan not found" });
+      res.status(500).json({ error: "Internal server error" });
     }
-  }
+  },
 );
 
 export default router;

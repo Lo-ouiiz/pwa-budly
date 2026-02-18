@@ -146,7 +146,7 @@ model SponsorshipPlan {
   description       String
   basePrice         Float
   taxReducedPrice   Float?
-  benefits          String
+  benefits          String[]
   durationMonths    Int
   deletedAt         DateTime?
 

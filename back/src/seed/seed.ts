@@ -18,6 +18,8 @@ async function main() {
   // =====================
   // USERS
   // =====================
+  console.log("Seeding users...");
+
   const jeanne = await prisma.user.upsert({
     where: { email: "jeanne.dupont@zoo-grenoble.fr" },
     update: {},
@@ -78,6 +80,8 @@ async function main() {
   // =====================
   // ZOOS
   // =====================
+  console.log("Seeding zoos...");
+
   const grenobleZoo = await prisma.zoo.upsert({
     where: { slug: "zoo-de-grenoble" },
     update: {},
@@ -212,66 +216,138 @@ async function main() {
   // =====================
   // PLANS
   // =====================
+  console.log("Seeding sponsorship plans...");
+
   const planGrenobleCopain = await prisma.sponsorshipPlan.create({
     data: {
       name: "Copain",
       description: "",
       basePrice: 20,
       taxReducedPrice: 6.8,
-      benefits:
-        "Newsletter, photo du filleul, certificat de parrainage, fiche de présentation, prénom sur le tableau des parrains, vidéo de remerciement, invitation à la journée des parrains",
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Invitation à la journée des parrains",
+      ],
       durationMonths: 12,
       zoo: { connect: { id: grenobleZoo.id } },
     },
   });
 
-  const planGrenobleAmi = await prisma.sponsorshipPlan.create({
+  await prisma.sponsorshipPlan.create({
     data: {
       name: "Ami",
       description: "",
       basePrice: 50,
       taxReducedPrice: 17,
-      benefits:
-        "Newsletter, photo du filleul, certificat de parrainage, fiche de présentation, prénom sur le tableau des parrains, vidéo de remerciement, fond d'écran, invitation à la journée des parrains",
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Fond d'écran",
+        "Invitation à la journée des parrains",
+      ],
       durationMonths: 12,
       zoo: { connect: { id: grenobleZoo.id } },
     },
   });
 
-  const planGrenobleCompagnon = await prisma.sponsorshipPlan.create({
+  await prisma.sponsorshipPlan.create({
     data: {
       name: "Compagnon",
       description: "",
       basePrice: 100,
       taxReducedPrice: 34,
-      benefits:
-        "Newsletter, photo du filleul, certificat de parrainage, fiche de présentation, prénom sur le tableau des parrains, vidéo de remerciement, fond d’écran, photo chaque semestre, dossier rétrospective, invitation à la journée des parrains",
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Fond d'écran",
+        "Photo chaque semestre",
+        "Dossier rétrospective",
+        "Invitation à la journée des parrains",
+      ],
       durationMonths: 12,
       zoo: { connect: { id: grenobleZoo.id } },
     },
   });
 
-  const planGrenoblePassionne = await prisma.sponsorshipPlan.create({
+  await prisma.sponsorshipPlan.create({
     data: {
       name: "Passionné",
       description: "",
       basePrice: 500,
       taxReducedPrice: 170,
-      benefits:
-        "Newsletter, photo du filleul, certificat de parrainage, fiche de présentation, prénom sur le tableau des parrains, vidéo de remerciement, fond d’écran, photo chaque semestre, dossier rétrospective, un Zoo Pass, invitation à la journée des parrains, visite guidée, vidéo de remerciement personnalisée",
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Fond d'écran",
+        "Photo chaque semestre",
+        "Dossier rétrospective",
+        "Invitation à la journée des parrains",
+        "Un Zoo Pass",
+        "Visite guidée",
+        "Vidéo de remerciement personnalisée",
+      ],
       durationMonths: 12,
       zoo: { connect: { id: grenobleZoo.id } },
     },
   });
 
-  const planLyon = await prisma.sponsorshipPlan.create({
+  await prisma.sponsorshipPlan.create({
+    data: {
+      name: "Ami",
+      description: "",
+      basePrice: 50,
+      taxReducedPrice: 17,
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Fond d'écran",
+        "Invitation à la journée des parrains",
+      ],
+      durationMonths: 12,
+      zoo: { connect: { id: lyonZoo.id } },
+    },
+  });
+
+  await prisma.sponsorshipPlan.create({
     data: {
       name: "Admirateur",
       description: "",
       basePrice: 150,
       taxReducedPrice: 51,
-      benefits:
-        "Newsletter, photo du filleul, certificat de parrainage, fiche de présentation, prénom sur le tableau des parrains, vidéo de remerciement, fond d’écran, photo chaque semestre, dossier rétrospective, un billet adulte, invitation à la journée des parrains",
+      benefits: [
+        "Newsletter",
+        "Photo du filleul",
+        "Certificat de parrainage",
+        "Fiche de présentation",
+        "Prénom sur le tableau des parrains",
+        "Vidéo de remerciement",
+        "Fond d'écran",
+        "Photo chaque semestre",
+        "Dossier rétrospective",
+        "Un billet adulte",
+        "Invitation à la journée des parrains",
+      ],
       durationMonths: 12,
       zoo: { connect: { id: lyonZoo.id } },
     },
@@ -280,6 +356,8 @@ async function main() {
   // =====================
   // SPONSORSHIP
   // =====================
+  console.log("Seeding sponsorships...");
+
   const sponsorship = await prisma.sponsorship.create({
     data: {
       status: "ACTIF",
@@ -296,6 +374,8 @@ async function main() {
   // =====================
   // INVOICE
   // =====================
+  console.log("Seeding invoices...");
+
   await prisma.invoice.create({
     data: {
       amount: 20,
