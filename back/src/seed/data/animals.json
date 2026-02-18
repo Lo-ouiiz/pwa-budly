@@ -2,7 +2,10 @@
   {
     "name": "Simba",
     "slug": "simba",
-    "photos": ["https://example.com/photos/simba1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ8YFuhGcL2p4euIYaGRF9hbwj6oxZkACscdl7",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQEKvT7owij4P1TO2cABsxvIaiY3hHqSgznfJW"
+    ],
     "species": "Lion",
     "subSpecies": "Lion d'Afrique",
     "age": 5,
@@ -24,7 +27,10 @@
   {
     "name": "Nala",
     "slug": "nala",
-    "photos": ["https://example.com/photos/nala1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQKzvOgZuUavnfHmrdMOctWp52wqsy4YQzbGN3",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQxZd67v1Hp1vsMyd2VkDmzfjGUrXTP9cqFuoh"
+    ],
     "species": "Lion",
     "subSpecies": "Lion d'Afrique",
     "age": 4,
@@ -46,7 +52,10 @@
   {
     "name": "Bagheera",
     "slug": "bagheera",
-    "photos": ["https://example.com/photos/bagheera1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ5SkTQh0zB4kFaJql3HNiemyDtr2o9InbcsKU",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQJyibRYr4WGwBTyO7XnmC3chNaVx0juSItsDL"
+    ],
     "species": "Léopard",
     "subSpecies": "Léopard d'Asie",
     "age": 6,
@@ -68,7 +77,10 @@
   {
     "name": "Rajah",
     "slug": "rajah",
-    "photos": ["https://example.com/photos/rajah1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQBYerQNnCKM3RtHaknTZPwAbxhvB4Gm18JEld",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ3YdJtS8QuLcknSwy5hVNxDrC7Bg9pF0KWjim"
+    ],
     "species": "Tigre",
     "subSpecies": "Tigre du Bengale",
     "age": 7,
@@ -90,7 +102,10 @@
   {
     "name": "Koko",
     "slug": "koko",
-    "photos": ["https://example.com/photos/koko1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQwPvnSbkpnFhZgtKH7qdszuxSLVUJWEyvlRAi",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ7zRQfqlnVE0zbgQ1aZ8otim3Sx4FsujWM6eq"
+    ],
     "species": "Gorille",
     "subSpecies": "Gorille des plaines occidentales",
     "age": 12,
@@ -112,7 +127,10 @@
   {
     "name": "Dumbo",
     "slug": "dumbo",
-    "photos": ["https://example.com/photos/dumbo1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQRKlKfTZE5BlVIeqMdZmOfU81wLb0iypKPuTN",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ72S3I8VlnVE0zbgQ1aZ8otim3Sx4FsujWM6e"
+    ],
     "species": "Éléphant",
     "subSpecies": "Éléphant d'Asie",
     "age": 20,
@@ -134,7 +152,10 @@
   {
     "name": "Ella",
     "slug": "ella",
-    "photos": ["https://example.com/photos/ella1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQRKlKfTZE5BlVIeqMdZmOfU81wLb0iypKPuTN",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ72S3I8VlnVE0zbgQ1aZ8otim3Sx4FsujWM6e"
+    ],
     "species": "Éléphant",
     "subSpecies": "Éléphant d'Afrique",
     "age": 18,
@@ -156,7 +177,9 @@
   {
     "name": "Rocky",
     "slug": "rocky",
-    "photos": ["https://example.com/photos/rocky1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQlqUn8VQuiOSmbezYaxhHV9qQoLW6M0gEATN1"
+    ],
     "species": "Fennec",
     "subSpecies": "",
     "age": 3,
@@ -178,7 +201,9 @@
   {
     "name": "Sandy",
     "slug": "sandy",
-    "photos": ["https://example.com/photos/sandy1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQ3x16rUv8QuLcknSwy5hVNxDrC7Bg9pF0KWji"
+    ],
     "species": "Suricate",
     "subSpecies": "",
     "age": 2,
@@ -200,7 +225,10 @@
   {
     "name": "Milo",
     "slug": "milo",
-    "photos": ["https://example.com/photos/milo1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQSGrERIaFcj5teKMOTlUV1Nv4RDnduE3ohL7s",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQVe3pHrY5PF6tslj9gYMovdKJBWaIqVSHrwuy"
+    ],
     "species": "Lémurien",
     "subSpecies": "Lémur catta",
     "age": 5,
@@ -222,7 +250,10 @@
   {
     "name": "Luna",
     "slug": "luna",
-    "photos": ["https://example.com/photos/luna1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQSGrERIaFcj5teKMOTlUV1Nv4RDnduE3ohL7s",
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQVe3pHrY5PF6tslj9gYMovdKJBWaIqVSHrwuy"
+    ],
     "species": "Lémurien",
     "subSpecies": "Lémur catta",
     "age": 4,
@@ -244,7 +275,9 @@
   {
     "name": "Toby",
     "slug": "toby",
-    "photos": ["https://example.com/photos/toby1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQkK8cJRXTFhHge04YPDlrx8GWc6JUvVOdBfSQ"
+    ],
     "species": "Pingouin",
     "subSpecies": "Pingouin royal",
     "age": 3,
@@ -266,7 +299,9 @@
   {
     "name": "Penny",
     "slug": "penny",
-    "photos": ["https://example.com/photos/penny1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQkK8cJRXTFhHge04YPDlrx8GWc6JUvVOdBfSQ"
+    ],
     "species": "Pingouin",
     "subSpecies": "Pingouin royal",
     "age": 2,
@@ -288,7 +323,9 @@
   {
     "name": "Hugo",
     "slug": "hugo",
-    "photos": ["https://example.com/photos/hugo1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQtmKKtcEoyHCIxMuiLTDj5aR9UhleK3p1OgfQ"
+    ],
     "species": "Tortue géante",
     "subSpecies": "Tortue géante des Seychelles",
     "age": 50,
@@ -310,7 +347,9 @@
   {
     "name": "Lily",
     "slug": "lily",
-    "photos": ["https://example.com/photos/lily1.jpg"],
+    "photos": [
+      "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQtmKKtcEoyHCIxMuiLTDj5aR9UhleK3p1OgfQ"
+    ],
     "species": "Tortue géante",
     "subSpecies": "Tortue géante des Seychelles",
     "age": 45,
