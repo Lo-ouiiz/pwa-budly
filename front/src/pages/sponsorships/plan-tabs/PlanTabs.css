@@ -1,0 +1,65 @@
+.sponsorship-tabs {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.sponsorship-tabs-list {
+  display: flex;
+  background: transparent;
+  padding: 0.25rem 0;
+  height: auto;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  max-width: 100%;
+  border-radius: 0;
+  margin-bottom: 0.5rem;
+}
+
+.sponsorship-tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.sponsorship-tab {
+  background: transparent;
+  border-bottom: 2px solid var(--primary);
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: -2px;
+}
+
+.sponsorship-tab[data-state='active'] {
+  border: 2px solid var(--primary);
+  border-bottom: 2px solid var(--background);
+  background: var(--background);
+  box-shadow: none;
+  z-index: 3;
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.tab-name {
+  font-weight: 600;
+}
+
+.tab-price {
+  font-size: 0.875rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sponsorship-tab-content {
+  margin-top: 0;
+  max-width: 100%;
+  overflow: hidden;
+}

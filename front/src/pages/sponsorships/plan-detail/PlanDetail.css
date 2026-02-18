@@ -1,0 +1,133 @@
+.plan-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.plan-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.plan-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.price-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.price-tax {
+  padding: 0.5rem 0.75rem;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  border-radius: 0.5rem;
+}
+
+.price-tax-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.price-tax-label {
+  font-size: 0.8rem;
+}
+
+.price-tax-amount {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.price-tax-info {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.plan-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--border);
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.benefit-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.benefit-item span {
+  line-height: 1.5;
+}
+
+.plan-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 1rem;
+  background: linear-gradient(to top, var(--background) 100%);
+}
+
+.sponsor-button {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+@media (min-width: 769px) {
+  .plan-actions {
+    position: fixed;
+    left: 50vw;
+    right: 0;
+    width: 50vw;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .price-main {
+    align-items: flex-start;
+  }
+
+  .price-duration {
+    text-align: left;
+  }
+
+  .benefits-list {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-actions {
+    bottom: 70px;
+  }
+}

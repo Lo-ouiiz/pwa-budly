@@ -10,14 +10,13 @@ import Profile from './pages/Profile';
 import Auth from './pages/auth/Auth';
 import NotFound from './pages/NotFound';
 import AnimalDetail from './pages/animal-details/AnimalDetails';
+import Sponsorships from './pages/sponsorships/Sponsorships';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   if (!authStore.isReady) return <Loader />;
-
   if (!authStore.accessToken) {
     return <Navigate to="/connexion" replace />;
   }
-
   return children;
 }
 
@@ -37,6 +36,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="recherche" element={<Search />} />
           <Route path="animal/:slug" element={<AnimalDetail />} />
+          <Route path="parrainages/:zooId" element={<Sponsorships />} />
           <Route
             path="animaux"
             element={

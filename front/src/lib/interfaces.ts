@@ -34,3 +34,23 @@ export interface RequestDataAnimals {
   totalItems: number;
   items: Animal[];
 }
+
+export interface Zoo {
+  id: number;
+  name: string;
+  slug: string;
+  logo: string;
+}
+
+export interface SponsorshipPlan {
+  id: number;
+  name: string;
+  description: string;
+  basePrice: number;
+  taxReducedPrice: number | null;
+  benefits: string[];
+  durationMonths: number;
+  zooId: number;
+  deletedAt: string | null;
+  zoo: Zoo;
+}

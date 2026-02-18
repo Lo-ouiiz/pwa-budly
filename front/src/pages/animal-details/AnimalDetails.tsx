@@ -40,6 +40,19 @@ export default function AnimalDetail() {
       });
   }, [animalId]);
 
+  const handleSponsorClick = () => {
+    if (animal) {
+      navigate(`/parrainages/${animal.zooId}`, {
+        state: {
+          zooId: animal.zooId,
+          zooName: animal.zoo.name,
+          animalName: animal.name,
+          animalPhoto: animal.photos[0],
+        },
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="animal-detail">
@@ -109,11 +122,11 @@ export default function AnimalDetail() {
           birthDate={animal.birthDate}
         />
 
-        <ConservationStatus status={animal.conservationStatus as any} />
+        <ConservationStatus status={animal.conservationStatus} />
       </div>
 
       <div className="animal-detail-sponsor-footer">
-        <Button size="lg" className="animal-detail-sponsor-button">
+        <Button size="lg" className="animal-detail-sponsor-button" onClick={handleSponsorClick}>
           Je parraine {animal.name}
         </Button>
       </div>
