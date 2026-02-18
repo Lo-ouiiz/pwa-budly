@@ -45,8 +45,9 @@ export default function PlanDetail({
             <span className="price-tax-label">après déduction fiscale</span>
           </div>
           <p className="price-tax-info">
-            Parrainer {animalName} c'est faire un don. Ce dernier est déductible à 66 % de vos
-            impôts (dans la limite de 20 % du revenu imposable de votre foyer).
+            Parrainer {animalName} c'est faire un don. <br />
+            Ce dernier est déductible à 66 % de vos impôts (dans la limite de 20 % du revenu
+            imposable de votre foyer).
           </p>
         </div>
       )}

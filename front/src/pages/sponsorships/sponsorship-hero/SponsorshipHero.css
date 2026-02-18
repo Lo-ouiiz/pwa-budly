@@ -27,7 +27,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 50vw;
+    width: 40vw;
     height: 100vh;
     max-height: none;
   }
@@ -42,7 +42,7 @@
 
 @media (max-width: 768px) {
   .sponsorship-hero {
-    height: 25vh;
+    height: 20vh;
     max-height: 250px;
   }
 
