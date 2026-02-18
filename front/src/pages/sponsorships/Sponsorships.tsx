@@ -45,6 +45,17 @@ export default function Sponsorships() {
       });
   }, [zooId]);
 
+  const handlePaymentClick = () => {
+    navigate('/paiement', {
+      state: {
+        zooId,
+        planId: plans[0].id,
+        animalName,
+        animalPhoto,
+      },
+    });
+  };
+
   if (!zooId) {
     return (
       <div className="sponsorship-page">
@@ -121,6 +132,7 @@ export default function Sponsorships() {
             durationMonths={plans[0].durationMonths}
             benefits={plans[0].benefits}
             animalName={animalName}
+            onSubscribe={handlePaymentClick}
           />
         ) : (
           <PlanTabs
@@ -128,6 +140,7 @@ export default function Sponsorships() {
             selectedPlan={selectedPlan}
             onPlanChange={setSelectedPlan}
             animalName={animalName}
+            onSubscribe={handlePaymentClick}
           />
         )}
       </div>

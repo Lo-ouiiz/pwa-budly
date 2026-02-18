@@ -8,9 +8,16 @@ interface PlanTabsProps {
   selectedPlan: string;
   onPlanChange: (value: string) => void;
   animalName?: string;
+  onSubscribe: () => void;
 }
 
-export default function PlanTabs({ plans, selectedPlan, onPlanChange, animalName }: PlanTabsProps) {
+export default function PlanTabs({
+  plans,
+  selectedPlan,
+  onPlanChange,
+  animalName,
+  onSubscribe,
+}: PlanTabsProps) {
   return (
     <Tabs value={selectedPlan} onValueChange={onPlanChange} className="sponsorship-tabs">
       <TabsList className="sponsorship-tabs-list">
@@ -34,6 +41,7 @@ export default function PlanTabs({ plans, selectedPlan, onPlanChange, animalName
             durationMonths={plan.durationMonths}
             benefits={plan.benefits}
             animalName={animalName}
+            onSubscribe={onSubscribe}
           />
         </TabsContent>
       ))}

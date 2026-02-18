@@ -10,6 +10,7 @@ interface PlanDetailProps {
   durationMonths: number;
   benefits: string[];
   animalName?: string;
+  onSubscribe: () => void;
 }
 
 export default function PlanDetail({
@@ -20,9 +21,8 @@ export default function PlanDetail({
   durationMonths,
   benefits,
   animalName,
+  onSubscribe,
 }: PlanDetailProps) {
-  //   const benefitsList = benefits.split('\n').filter((b) => b.trim() !== '');
-
   return (
     <div className="plan-detail">
       <div className="plan-header">
@@ -64,7 +64,7 @@ export default function PlanDetail({
       </div>
 
       <div className="plan-actions">
-        <Button size="lg" className="sponsor-button">
+        <Button size="lg" className="sponsor-button" onClick={onSubscribe}>
           Je parraine {animalName} - {basePrice}€
         </Button>
       </div>
