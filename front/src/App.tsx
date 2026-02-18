@@ -36,7 +36,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="recherche" element={<Search />} />
           <Route path="animal/:slug" element={<AnimalDetail />} />
-          <Route path="parrainages/:zooId" element={<Sponsorships />} />
+          <Route path="offres-parrainage/" element={<Sponsorships />} />
           <Route
             path="animaux"
             element={

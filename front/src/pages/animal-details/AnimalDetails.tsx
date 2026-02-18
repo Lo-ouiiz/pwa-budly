@@ -42,7 +42,7 @@ export default function AnimalDetail() {
 
   const handleSponsorClick = () => {
     if (animal) {
-      navigate(`/parrainages/${animal.zooId}`, {
+      navigate('/offres-parrainage', {
         state: {
           zooId: animal.zooId,
           zooName: animal.zoo.name,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import type { SponsorshipPlan } from '@/lib/interfaces';
 import { Button } from '@/components/ui/button';
@@ -10,15 +10,16 @@ import PlanDetail from './plan-detail/PlanDetail';
 import './Sponsorships.css';
 
 export default function Sponsorships() {
-  const { zooId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const zooId = location.state?.zooId;
+  const animalName = location.state?.animalName;
+  const animalPhoto = location.state?.animalPhoto;
+
   const [plans, setPlans] = useState<SponsorshipPlan[]>([]);
   const [loading, setLoading] = useState(!!zooId);
   const [selectedPlan, setSelectedPlan] = useState<string>('');
-
-  const animalName = location.state?.animalName;
-  const animalPhoto = location.state?.animalPhoto;
 
   useEffect(() => {
     if (!zooId) {
