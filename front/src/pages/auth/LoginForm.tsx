@@ -24,7 +24,8 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const redirectTo = location.state?.from || '/profil';
+  const redirectTo = location.state?.from ?? '/profil';
+  const redirectState = location.state?.state;
 
   const {
     register,
@@ -55,7 +56,10 @@ export default function LoginForm() {
       const json = await res.json();
       authStore.accessToken = json.accessToken;
 
-      navigate(redirectTo, { replace: true });
+      navigate(redirectTo, {
+        replace: true,
+        state: redirectState,
+      });
 
       //eslint-disable-next-line
     } catch (err: any) {

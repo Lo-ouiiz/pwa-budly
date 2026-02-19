@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { authStore, initAuth } from './lib/auth';
 import Loader from './components/loader/Loader';
 import Layout from './components/layout/Layout';
@@ -14,10 +14,23 @@ import Sponsorships from './pages/sponsorships/Sponsorships';
 import Payment from './pages/payment/Payment';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
+  const location = useLocation();
+
   if (!authStore.isReady) return <Loader />;
+
   if (!authStore.accessToken) {
-    return <Navigate to="/connexion" replace />;
+    return (
+      <Navigate
+        to="/connexion"
+        replace
+        state={{
+          from: location.pathname,
+          state: location.state,
+        }}
+      />
+    );
   }
+
   return children;
 }
 
@@ -38,7 +51,14 @@ export default function App() {
           <Route path="recherche" element={<Search />} />
           <Route path="animal/:slug" element={<AnimalDetail />} />
           <Route path="offres-parrainage/" element={<Sponsorships />} />
-          <Route path="paiement/" element={<Payment />} />
+          <Route
+            path="paiement/"
+            element={
+              <ProtectedRoute>
+                <Payment />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="animaux"
             element={

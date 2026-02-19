@@ -54,7 +54,9 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const redirectTo = location.state?.from || '/profil';
+
+  const redirectTo = location.state?.from ?? '/profil';
+  const redirectState = location.state?.state;
 
   const {
     register,
@@ -100,7 +102,6 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
         throw new Error(err.message || 'Erreur lors de la création du compte');
       }
 
-      // connexion automatique
       const loginRes = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -116,7 +117,10 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
       const json = await loginRes.json();
       authStore.accessToken = json.accessToken;
 
-      navigate(redirectTo, { replace: true });
+      navigate(redirectTo, {
+        replace: true,
+        state: redirectState,
+      });
 
       //eslint-disable-next-line
     } catch (err: any) {
