@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { prisma } from "../lib/prisma.js";
 import { UserRole } from "../../generated/prisma/enums.js";
+import { auth, AuthRequest } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 const SALT_ROUNDS = 10;
@@ -29,6 +30,39 @@ router.get("/", async (_req: Request, res: Response) => {
       select: userSelect,
     });
     res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET user me
+router.get("/me", auth, async (req: AuthRequest, res: Response) => {
+  try {
+    const userId = req.user!.id;
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        phoneNumber: true,
+        street: true,
+        postalCode: true,
+        city: true,
+        country: true,
+        birthDate: true,
+        role: true,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });

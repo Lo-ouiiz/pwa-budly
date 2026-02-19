@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { authStore } from '@/lib/auth';
 import * as z from 'zod';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useUser } from '@/lib/hooks/useUser';
 
 const loginSchema = z.object({
   email: z.email({ message: 'Email invalide' }),
@@ -23,6 +24,7 @@ export default function LoginForm() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { refreshUser } = useUser();
 
   const redirectTo = location.state?.from ?? '/profil';
   const redirectState = location.state?.state;
@@ -55,6 +57,8 @@ export default function LoginForm() {
 
       const json = await res.json();
       authStore.accessToken = json.accessToken;
+
+      await refreshUser();
 
       navigate(redirectTo, {
         replace: true,

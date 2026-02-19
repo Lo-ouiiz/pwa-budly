@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { UserProvider } from './lib/context/UserContext';
 import { authStore, initAuth } from './lib/auth';
 import Loader from './components/loader/Loader';
 import Layout from './components/layout/Layout';
@@ -45,40 +46,42 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="recherche" element={<Search />} />
-          <Route path="animal/:slug" element={<AnimalDetail />} />
-          <Route path="offres-parrainage/" element={<Sponsorships />} />
-          <Route
-            path="paiement/"
-            element={
-              <ProtectedRoute>
-                <Payment />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="animaux"
-            element={
-              <ProtectedRoute>
-                <Animals />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="profil"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="connexion" element={<Auth />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="recherche" element={<Search />} />
+            <Route path="animal/:slug" element={<AnimalDetail />} />
+            <Route path="offres-parrainage/" element={<Sponsorships />} />
+            <Route
+              path="paiement/"
+              element={
+                <ProtectedRoute>
+                  <Payment />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="animaux"
+              element={
+                <ProtectedRoute>
+                  <Animals />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="profil"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="connexion" element={<Auth />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   );
 }

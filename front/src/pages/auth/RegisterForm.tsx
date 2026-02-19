@@ -8,6 +8,7 @@ import { authStore } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import { Field, FieldLabel } from '@/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
+import { useUser } from '@/lib/hooks/useUser';
 
 type Props = {
   step: number;
@@ -54,6 +55,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { refreshUser } = useUser();
 
   const redirectTo = location.state?.from ?? '/profil';
   const redirectState = location.state?.state;
@@ -116,6 +118,8 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
 
       const json = await loginRes.json();
       authStore.accessToken = json.accessToken;
+
+      await refreshUser();
 
       navigate(redirectTo, {
         replace: true,
