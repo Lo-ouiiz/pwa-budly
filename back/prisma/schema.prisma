@@ -163,7 +163,7 @@ model Sponsorship {
   status               SponsorshipStatus
   startDate            DateTime
   endDate              DateTime?
-  monthlyAmount        Float
+  amount               Float
   autoRenew            Boolean   @default(false)
   createdAt            DateTime  @default(now())
 

@@ -363,7 +363,7 @@ async function main() {
       status: "ACTIF",
       startDate: new Date("2025-01-05"),
       endDate: new Date("2026-01-05"),
-      monthlyAmount: 20,
+      amount: 20,
       autoRenew: true,
       user: { connect: { id: claire.id } },
       animal: { connect: { id: createdAnimals["Simba"].id } },
