@@ -365,6 +365,7 @@ async function main() {
       endDate: new Date("2026-01-05"),
       amount: 20,
       autoRenew: true,
+      transactionId: "pi_3T2X2VJ25t3tWopL0Uxp2beX",
       user: { connect: { id: claire.id } },
       animal: { connect: { id: createdAnimals["Simba"].id } },
       plan: { connect: { id: planGrenobleCopain.id } },

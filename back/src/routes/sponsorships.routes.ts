@@ -63,10 +63,26 @@ router.post(
   requireRole("USER"),
   async (req: AuthRequest, res: Response) => {
     const userId = req.user!.id;
-    const { animalId, planId, startDate, endDate, amount, autoRenew, status } =
-      req.body;
+    const {
+      animalId,
+      planId,
+      startDate,
+      endDate,
+      amount,
+      autoRenew,
+      status,
+      transactionId,
+    } = req.body;
 
-    if (!animalId || !planId || !startDate || amount == null || !status) {
+    if (
+      !animalId ||
+      !planId ||
+      !startDate ||
+      !endDate ||
+      amount == null ||
+      !status ||
+      !transactionId
+    ) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
@@ -79,6 +95,7 @@ router.post(
           startDate: new Date(startDate),
           endDate: endDate ? new Date(endDate) : undefined,
           amount,
+          transactionId,
           autoRenew: autoRenew ?? false,
           status,
         },

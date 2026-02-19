@@ -165,6 +165,7 @@ model Sponsorship {
   endDate              DateTime?
   amount               Float
   autoRenew            Boolean   @default(false)
+  transactionId        String
   createdAt            DateTime  @default(now())
 
   userId               Int
