@@ -10,6 +10,31 @@
   gap: 1rem;
 }
 
+.address-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  list-style: none;
+  padding: 4px 0;
+  margin: 4px 0 0;
+}
+
+.address-suggestions li {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.address-suggestions li:hover {
+  background: var(--muted);
+}
+
 @media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;

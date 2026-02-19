@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,12 +26,26 @@ interface PersonalInfoFormProps {
   onBack: () => void;
 }
 
+interface AddressFeature {
+  properties: {
+    id: string;
+    label: string;
+    name: string;
+    postcode: string;
+    city: string;
+  };
+}
+
 export default function PersonalInfoForm({ onSubmit, onBack }: PersonalInfoFormProps) {
   const { user } = useUser();
+  const [suggestions, setSuggestions] = useState<AddressFeature[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isValid },
   } = useForm<PersonalInfo>({
     resolver: zodResolver(personalInfoSchema),
@@ -46,6 +61,37 @@ export default function PersonalInfoForm({ onSubmit, onBack }: PersonalInfoFormP
       country: user?.country || 'France',
     },
   });
+
+  const handleStreetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setValue('street', value, { shouldValidate: true });
+
+    clearTimeout(debounceRef.current);
+    if (value.length < 3) {
+      setSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+
+    debounceRef.current = setTimeout(async () => {
+      const res = await fetch(
+        `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(value)}&limit=5`,
+      );
+      const data = await res.json();
+      setSuggestions(data.features || []);
+      setShowSuggestions(true);
+    }, 300);
+  };
+
+  const handleSelectSuggestion = (feature: AddressFeature) => {
+    const props = feature.properties;
+    setValue('street', props.name, { shouldValidate: true });
+    setValue('postalCode', props.postcode, { shouldValidate: true });
+    setValue('city', props.city, { shouldValidate: true });
+    setValue('country', 'France', { shouldValidate: true });
+    setSuggestions([]);
+    setShowSuggestions(false);
+  };
 
   const onSubmitForm: SubmitHandler<PersonalInfo> = (data) => {
     onSubmit(data);
@@ -107,9 +153,26 @@ export default function PersonalInfoForm({ onSubmit, onBack }: PersonalInfoFormP
 
       <Field>
         <FieldLabel htmlFor="street">{requiredLabel('Adresse')}</FieldLabel>
-        <InputGroup>
-          <InputGroupInput id="street" placeholder="12 rue de la Paix" {...register('street')} />
-        </InputGroup>
+        <div style={{ position: 'relative' }}>
+          <InputGroup>
+            <InputGroupInput
+              id="street"
+              placeholder="12 rue de la Paix"
+              {...register('street')}
+              onChange={handleStreetChange}
+              autoComplete="off"
+            />
+          </InputGroup>
+          {showSuggestions && suggestions.length > 0 && (
+            <ul className="address-suggestions">
+              {suggestions.map((feature) => (
+                <li key={feature.properties.id} onMouseDown={() => handleSelectSuggestion(feature)}>
+                  {feature.properties.label}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
         {errors.street && <span className="auth-error">{errors.street.message}</span>}
       </Field>
 
