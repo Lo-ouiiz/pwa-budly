@@ -11,9 +11,10 @@
 }
 
 .payment-form-actions {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
 }
 
 .payment-divider {
@@ -32,4 +33,18 @@
   flex: 1;
   height: 2px;
   background-color: var(--border);
+}
+
+@media (min-width: 768px) {
+  .payment-form-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .payment-form-actions > :first-child {
+    order: 2;
+  }
+
+  .payment-form-actions > :last-child {
+    order: 1;
+  }
 }

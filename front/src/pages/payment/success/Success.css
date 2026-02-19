@@ -1,0 +1,82 @@
+.success-page {
+  background: var(--background);
+}
+
+.success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.success-icon {
+  color: var(--primary);
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-animal-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+}
+
+.success-details {
+  background: var(--muted);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.success-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.success-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .success-content {
+    margin-left: 40vw;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .success-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .success-actions > :first-child {
+    order: 2;
+  }
+
+  .success-actions > :last-child {
+    order: 1;
+  }
+}

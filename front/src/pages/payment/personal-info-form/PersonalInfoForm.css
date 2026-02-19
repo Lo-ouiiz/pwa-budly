@@ -35,8 +35,29 @@
   background: var(--muted);
 }
 
+.personal-info-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .personal-info-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .personal-info-actions > :first-child {
+    order: 2;
+  }
+
+  .personal-info-actions > :last-child {
+    order: 1;
   }
 }

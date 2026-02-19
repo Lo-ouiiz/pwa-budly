@@ -202,12 +202,14 @@ export default function PersonalInfoForm({ onSubmit, onBack }: PersonalInfoFormP
         {errors.country && <span className="auth-error">{errors.country.message}</span>}
       </Field>
 
-      <Button type="submit" size="lg" disabled={!isValid}>
-        Je continue
-      </Button>
-      <Button variant="outline" type="button" size="lg" onClick={onBack}>
-        Retour au récapitulatif
-      </Button>
+      <div className="personal-info-actions">
+        <Button type="submit" size="lg" disabled={!isValid}>
+          Je continue
+        </Button>
+        <Button variant="outline" type="button" size="lg" onClick={onBack}>
+          Retour au récapitulatif
+        </Button>
+      </div>
     </form>
   );
 }

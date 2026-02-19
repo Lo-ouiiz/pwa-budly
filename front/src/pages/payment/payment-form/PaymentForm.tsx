@@ -146,8 +146,14 @@ export default function PaymentForm({
         navigate('/success', {
           state: {
             animalName,
+            animalPhoto,
+            animalId,
             planName,
             amount: planPrice,
+            durationMonths,
+            endDate: new Date(
+              new Date().setMonth(new Date().getMonth() + durationMonths),
+            ).toISOString(),
           },
         });
       } catch (err) {

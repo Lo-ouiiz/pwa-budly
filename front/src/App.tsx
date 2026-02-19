@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 import AnimalDetail from './pages/animal-details/AnimalDetails';
 import Sponsorships from './pages/sponsorships/Sponsorships';
 import Payment from './pages/payment/Payment';
+import Success from './pages/payment/success/Success';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -61,6 +62,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/success" element={<Success />} />
             <Route
               path="animaux"
               element={
