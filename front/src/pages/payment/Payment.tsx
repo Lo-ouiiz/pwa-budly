@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, type StripeElementsOptions } from '@stripe/stripe-js';
 import PaymentForm from './payment-form/PaymentForm';
@@ -80,8 +81,20 @@ export default function Payment() {
 
   if (!clientSecret) {
     return (
-      <div className="payment-loading">
-        <p>Chargement du paiement…</p>
+      <div className="payment-page">
+        <Skeleton className="h-48 w-full" />
+        <div className="payment-content">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2rem' }}>
+            <Skeleton className="h-8 w-8 rounded-full" />
+            <Skeleton className="h-2 w-20" />
+            <Skeleton className="h-8 w-8 rounded-full" />
+            <Skeleton className="h-2 w-20" />
+            <Skeleton className="h-8 w-8 rounded-full" />
+          </div>
+          <Skeleton className="h-6 w-48 mb-3" />
+          <Skeleton className="h-32 w-full mb-4" />
+          <Skeleton className="h-12 w-full" />
+        </div>
       </div>
     );
   }
