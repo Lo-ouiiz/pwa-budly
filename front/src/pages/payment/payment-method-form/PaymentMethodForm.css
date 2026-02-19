@@ -1,0 +1,35 @@
+.payment-method-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-divider span {
+  font-size: 0.875rem;
+}
+
+.payment-divider::before,
+.payment-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background-color: var(--border);
+}

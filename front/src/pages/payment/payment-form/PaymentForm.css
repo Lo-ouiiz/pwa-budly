@@ -1,0 +1,117 @@
+.payment-page {
+  padding-bottom: 100px;
+}
+
+.payment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.step span:first-child {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.step.active span:first-child {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.step.completed span:first-child {
+  background: var(--primary);
+}
+
+.step.completed svg {
+  color: var(--primary-foreground);
+}
+
+.step-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 0.5rem;
+  max-width: 100px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.next-button {
+  width: 100%;
+}
+
+.payment-message-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid var(--destructive);
+  color: var(--destructive);
+}
+
+.payment-message-error span {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .step-label {
+    font-size: 0.75rem;
+  }
+
+  .step span:first-child {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+
+  .step.completed svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-page {
+    padding-bottom: 0;
+  }
+  .payment-content {
+    margin-left: 40vw;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+  }
+}

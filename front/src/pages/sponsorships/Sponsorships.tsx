@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import type { SponsorshipPlan } from '@/lib/interfaces';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import SponsorshipHero from './sponsorship-hero/SponsorshipHero';
+import SponsorshipHero from '../../components/sponsorship-hero/SponsorshipHero';
 import PlanTabs from './plan-tabs/PlanTabs';
 import PlanDetail from './plan-detail/PlanDetail';
 import './Sponsorships.css';
@@ -14,6 +14,7 @@ export default function Sponsorships() {
   const navigate = useNavigate();
 
   const zooId = location.state?.zooId;
+  const animalId = location.state?.animalId;
   const animalName = location.state?.animalName;
   const animalPhoto = location.state?.animalPhoto;
 
@@ -46,12 +47,22 @@ export default function Sponsorships() {
   }, [zooId]);
 
   const handlePaymentClick = () => {
+    const currentPlan = plans.find((plan) => plan.id.toString() === selectedPlan);
+
+    if (!currentPlan) {
+      console.error('Plan non trouvé');
+      return;
+    }
+
     navigate('/paiement', {
       state: {
-        zooId,
-        planId: plans[0].id,
-        animalName,
-        animalPhoto,
+        planId: currentPlan.id,
+        planName: currentPlan.name,
+        planPrice: currentPlan.basePrice,
+        durationMonths: currentPlan.durationMonths,
+        animalId: animalId,
+        animalName: animalName,
+        animalPhoto: animalPhoto,
       },
     });
   };

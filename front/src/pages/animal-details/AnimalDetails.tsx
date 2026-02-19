@@ -46,6 +46,7 @@ export default function AnimalDetail() {
         state: {
           zooId: animal.zooId,
           zooName: animal.zoo.name,
+          animalId: animal.id,
           animalName: animal.name,
           animalPhoto: animal.photos[0],
         },

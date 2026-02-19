@@ -127,6 +127,34 @@ router.post("/", async (req: Request, res: Response) => {
   }
 });
 
+// PATCH user
+router.patch("/me", auth, async (req: AuthRequest, res: Response) => {
+  const userId = req.user!.id;
+  const { street, postalCode, city, country, phoneNumber } = req.body;
+
+  try {
+    const user = await prisma.user.findUnique({ where: { id: userId } });
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        street: user.street || street,
+        postalCode: user.postalCode || postalCode,
+        city: user.city || city,
+        country: user.country || country,
+        phoneNumber: user.phoneNumber || phoneNumber,
+      },
+      select: userSelect,
+    });
+
+    res.json(updatedUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // UPDATE user
 router.put("/:id", async (req: Request, res: Response) => {
   const id = Number(req.params.id);
