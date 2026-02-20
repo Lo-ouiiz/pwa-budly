@@ -143,7 +143,7 @@ export default function PaymentForm({
       try {
         await updateUserIfNeeded();
         await createSponsorship(paymentIntent.id);
-        navigate('/success', {
+        navigate('/succes', {
           state: {
             animalName,
             animalPhoto,

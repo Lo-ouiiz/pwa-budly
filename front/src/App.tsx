@@ -62,7 +62,7 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/success" element={<Success />} />
+            <Route path="/succes" element={<Success />} />
             <Route
               path="animaux"
               element={
