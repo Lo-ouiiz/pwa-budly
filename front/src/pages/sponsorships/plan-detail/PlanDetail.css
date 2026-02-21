@@ -107,11 +107,9 @@
 
 @media (min-width: 769px) {
   .plan-actions {
-    position: fixed;
-    left: 40vw;
-    right: 0;
-    width: 60vw;
-    bottom: 0;
+    left: max(0px, calc((100vw - 1024px) / 2 + min(410px, 40vw)));
+    right: max(0px, calc((100vw - 1024px) / 2));
+    width: auto;
   }
 }
 

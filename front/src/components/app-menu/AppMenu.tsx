@@ -31,43 +31,41 @@ export default function AppMenu() {
   return (
     <>
       <header className="nav-desktop">
-        <NavLink to="/">
-          <img src="/src/assets/logo.svg" alt="logo" />
-        </NavLink>
-        <nav className="nav-desktop-links">
-          {navItems
-            .filter((item) => item.showOnDesktop)
-            .map((item) => {
-              const Icon = item.icon;
-
-              if (item.desktopVariant === 'button') {
+        <div className="nav-desktop-inner">
+          <NavLink to="/">
+            <img src="/src/assets/logo.svg" alt="logo" />
+          </NavLink>
+          <nav className="nav-desktop-links">
+            {navItems
+              .filter((item) => item.showOnDesktop)
+              .map((item) => {
+                const Icon = item.icon;
+                if (item.desktopVariant === 'button') {
+                  return (
+                    <NavLink key={item.label} to={item.href} className="nav-desktop-account">
+                      <Icon size={18} weight="regular" />
+                      <span>{item.label}</span>
+                    </NavLink>
+                  );
+                }
                 return (
-                  <NavLink key={item.label} to={item.href} className="nav-desktop-account">
-                    <Icon size={18} weight="regular" />
-                    <span>{item.label}</span>
+                  <NavLink
+                    key={item.label}
+                    to={item.href}
+                    className={({ isActive }) =>
+                      isActive ? 'nav-desktop-link active' : 'nav-desktop-link'
+                    }
+                  >
+                    {item.label}
                   </NavLink>
                 );
-              }
-
-              return (
-                <NavLink
-                  key={item.label}
-                  to={item.href}
-                  className={({ isActive }) =>
-                    isActive ? 'nav-desktop-link active' : 'nav-desktop-link'
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              );
-            })}
-        </nav>
+              })}
+          </nav>
+        </div>
       </header>
-
       <header className="nav-mobile-top">
         <img src="/src/assets/logo.svg" alt="logo" />
       </header>
-
       <nav className="nav-mobile">
         <ul className="nav-mobile-list">
           {navItems.map((item) => {

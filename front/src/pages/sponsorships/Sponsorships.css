@@ -1,5 +1,8 @@
 .sponsorship-page {
   padding-bottom: 125px;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .sponsorship-content {
@@ -33,7 +36,7 @@
   }
 
   .sponsorship-content {
-    margin-left: 40vw;
+    margin-left: min(410px, 40vw);
     overflow-y: auto;
     padding: 1rem 1.5rem;
     padding-bottom: 100px;

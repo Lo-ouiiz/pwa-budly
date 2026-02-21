@@ -1,5 +1,8 @@
 .payment-page {
   padding-bottom: 100px;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .payment-content {
@@ -109,8 +112,9 @@
   .payment-page {
     padding-bottom: 0;
   }
+
   .payment-content {
-    margin-left: 40vw;
+    margin-left: min(410px, 40vw);
     overflow-y: auto;
     padding: 1rem 1.5rem;
   }

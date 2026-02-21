@@ -1,7 +1,8 @@
 .search-animals-section {
-  width: 100%;
   padding: 1rem;
   padding-bottom: 100px;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .search-header-mobile {

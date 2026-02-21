@@ -6,11 +6,18 @@
   right: 0;
   z-index: 50;
   height: 3.5rem;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
   border-bottom: 1px solid var(--border);
   background-color: var(--background);
+}
+
+.nav-desktop-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .nav-desktop img {
@@ -19,7 +26,7 @@
 
 @media (min-width: 768px) {
   .nav-desktop {
-    display: flex;
+    display: block;
   }
 }
 

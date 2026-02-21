@@ -22,12 +22,48 @@
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
 }
 
+.sponsorship-page {
+  padding-bottom: 125px;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.sponsorship-content {
+  margin: 0;
+  padding: 1rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sponsorship-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.no-plans {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.no-plans p {
+  margin-bottom: 1.5rem;
+}
+
 @media (min-width: 769px) {
+  .sponsorship-page {
+    display: flex;
+    overflow: hidden;
+    padding-bottom: 0;
+  }
+
   .sponsorship-hero {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 40vw;
+    left: max(0px, calc((100vw - 1024px) / 2));
+    width: min(410px, 40vw);
     height: 100vh;
     max-height: none;
   }
@@ -35,8 +71,19 @@
   .sponsorship-back-button {
     position: fixed;
     top: 4.5rem;
-    left: 1rem;
+    left: max(1rem, calc((100vw - 1024px) / 2 + 1rem));
     z-index: 60;
+  }
+
+  .sponsorship-content {
+    margin-left: min(410px, 40vw);
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    padding-bottom: 100px;
+  }
+
+  .sponsorship-intro {
+    margin-bottom: 2.5rem;
   }
 }
 
