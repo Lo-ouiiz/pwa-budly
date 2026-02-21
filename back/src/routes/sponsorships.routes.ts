@@ -46,9 +46,39 @@ router.get(
 router.get("/user/me", auth, async (req: AuthRequest, res: Response) => {
   try {
     const userId = req.user!.id;
+
     const sponsorships = await prisma.sponsorship.findMany({
       where: { userId },
+      include: {
+        animal: {
+          include: {
+            species: true,
+            subSpecies: true,
+            zoo: {
+              select: {
+                id: true,
+                name: true,
+                city: true,
+                logo: true,
+              },
+            },
+          },
+        },
+        plan: {
+          select: {
+            id: true,
+            name: true,
+            description: true,
+            basePrice: true,
+            taxReducedPrice: true,
+            durationMonths: true,
+            benefits: true,
+          },
+        },
+      },
+      orderBy: { createdAt: "desc" },
     });
+
     res.json(sponsorships);
   } catch (err) {
     console.error(err);

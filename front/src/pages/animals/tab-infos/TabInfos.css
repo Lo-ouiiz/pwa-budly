@@ -1,0 +1,78 @@
+.infos-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.infos-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infos-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.5rem;
+}
+
+.infos-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.infos-complementaires {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.infos-tiles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.infos-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.7rem 0.875rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.infos-tile:last-child {
+  border-bottom: none;
+}
+
+.infos-tile.full {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.infos-tile-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.infos-tile-label {
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.infos-tile-value {
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: right;
+}
+
+.infos-tile.full .infos-tile-value {
+  text-align: left;
+}

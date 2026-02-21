@@ -1,0 +1,325 @@
+.animals-page {
+  width: 100%;
+  max-width: 1024px;
+  padding: 1rem 1rem 100px 1rem;
+}
+
+.animals-title {
+  margin-bottom: 1rem;
+}
+
+.animals-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.animals-sidebar {
+  display: none;
+}
+
+.animals-main {
+  min-width: 0;
+}
+
+/* Mobile : carousel horizontal */
+.animals-chips-list {
+  display: flex;
+  gap: 0.875rem;
+  padding-bottom: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.animals-chips-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sur mobile on affiche le carousel directement dans animals-page */
+@media (max-width: 767px) {
+  .animals-sidebar {
+    display: block;
+  }
+
+  .animals-chips-list {
+    flex-direction: row;
+  }
+
+  .animal-chip {
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 768px) {
+  .animals-page {
+    padding: 1rem 1.5rem;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .animals-layout {
+    flex-direction: row;
+    gap: 1.5rem;
+    flex: 1;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
+  .animals-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    flex-shrink: 0;
+    border-right: 2px solid var(--border);
+    padding-right: 1.5rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .animals-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animals-chips-list {
+    flex-direction: column;
+    overflow-x: unset;
+    overflow-y: auto;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+    gap: 0.25rem;
+  }
+
+  .animals-main {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .animals-main::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Sur desktop, chip en mode ligne */
+  .animal-chip {
+    flex-direction: row;
+    width: 100%;
+    gap: 0.75rem;
+    padding: 0.5rem 0.625rem;
+    border-radius: 0.5rem;
+    transition: background 0.15s ease;
+    justify-content: flex-start;
+  }
+
+  .animal-chip-avatar {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .animal-chip-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .animal-chip-name {
+    max-width: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    font-size: 0.85rem;
+  }
+
+  .animal-hero {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.animal-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.animal-chip:active {
+  transform: scale(0.94);
+}
+
+.animal-chip-avatar {
+  position: relative;
+  width: 68px;
+  height: 68px;
+}
+
+.animal-chip-img {
+  width: 68px;
+  height: 68px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  background-color: var(--muted);
+  transition: border-color 0.2s ease;
+}
+
+.animal-chip.active .animal-chip-img {
+  border-color: var(--secondary);
+}
+
+.animal-chip-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  max-width: 68px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.animal-chip.active .animal-chip-name {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.animal-hero {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 0;
+  border-top: 2px solid var(--border);
+  animation: fadeSlideIn 0.25s ease;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animal-hero-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  background: var(--muted);
+  flex-shrink: 0;
+}
+
+.animal-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.animal-hero-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.animal-tabs {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.animal-tabs-list {
+  display: flex;
+  background: transparent;
+  padding: 0.25rem 0;
+  height: auto;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  max-width: 100%;
+  border-radius: 0;
+  margin-bottom: 0.5rem;
+}
+
+.animal-tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.animal-tab-trigger {
+  background: transparent;
+  border-bottom: 2px solid var(--primary);
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 600;
+  margin-bottom: -2px;
+  cursor: pointer;
+}
+
+.animal-tab-trigger[data-state='active'] {
+  border: 2px solid var(--primary);
+  border-bottom: 2px solid var(--background);
+  background: var(--background);
+  box-shadow: none;
+  z-index: 3;
+}
+
+.animal-tab-trigger:hover:not([data-state='active']) {
+  color: var(--foreground);
+}
+
+.animals-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  padding: 4rem 1.5rem;
+}
+
+.animals-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animals-empty {
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.animals-error {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--destructuve);
+  font-size: 0.88rem;
+}
