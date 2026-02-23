@@ -1,0 +1,94 @@
+.home-compatible-section {
+  width: 100%;
+  position: relative;
+}
+
+.home-compatible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-compatible-arrows {
+  display: none;
+  gap: 0.25rem;
+  position: absolute;
+  top: -35px;
+  right: 50px;
+}
+
+@media (min-width: 768px) {
+  .home-compatible-arrows {
+    display: flex;
+  }
+}
+
+.home-compatible-carousel {
+  width: 100%;
+  position: relative;
+}
+
+.home-compatible-carousel-prev,
+.home-compatible-carousel-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.home-compatible-carousel-prev:hover,
+.home-compatible-carousel-next:hover {
+  opacity: 0.85;
+}
+
+.home-compatible-carousel-item {
+  flex-basis: 60%;
+}
+
+@media (min-width: 640px) {
+  .home-compatible-carousel-item {
+    flex-basis: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-compatible-carousel-item {
+    flex-basis: 30%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-compatible-carousel-item {
+    flex-basis: 23%;
+  }
+}
+
+.home-compatible-see-more-card {
+  height: 280px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+@media (min-width: 640px) {
+  .home-compatible-see-more-card {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-compatible-see-more-card {
+    height: 350px;
+  }
+}
