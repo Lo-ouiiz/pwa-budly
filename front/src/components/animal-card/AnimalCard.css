@@ -16,10 +16,23 @@
 }
 
 .animal-card-image {
+  position: relative;
   height: 200px;
   background-size: cover;
   background-position: center;
   background-color: var(--muted);
+}
+
+.animal-card-best-badge {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
 }
 
 .animal-card-body {
@@ -34,6 +47,14 @@
   font-weight: 600;
   color: var(--card-foreground);
   margin-bottom: 0.25rem;
+}
+
+.animal-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
 .animal-card-info {
@@ -67,6 +88,10 @@
 
   .animal-card-image {
     height: 220px;
+  }
+
+  .animal-card-best-badge {
+    font-size: 0.72rem;
   }
 
   .animal-card-button {

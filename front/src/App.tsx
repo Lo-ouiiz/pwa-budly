@@ -14,6 +14,7 @@ import AnimalDetail from './pages/animal-details/AnimalDetails';
 import Sponsorships from './pages/sponsorships/Sponsorships';
 import Payment from './pages/payment/Payment';
 import Success from './pages/payment/success/Success';
+import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -51,6 +52,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="/quiz" element={<AnimalQuiz />} />
             <Route path="recherche" element={<Search />} />
             <Route path="animal/:slug" element={<AnimalDetail />} />
             <Route path="offres-parrainage/" element={<Sponsorships />} />

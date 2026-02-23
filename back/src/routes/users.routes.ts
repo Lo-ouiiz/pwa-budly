@@ -55,6 +55,7 @@ router.get("/me", auth, async (req: AuthRequest, res: Response) => {
         country: true,
         birthDate: true,
         role: true,
+        traits: true,
       },
     });
 
@@ -145,6 +146,29 @@ router.patch("/me", auth, async (req: AuthRequest, res: Response) => {
         country: user.country || country,
         phoneNumber: user.phoneNumber || phoneNumber,
       },
+      select: userSelect,
+    });
+
+    res.json(updatedUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// PATCH user traits
+router.patch("/me/traits", auth, async (req: AuthRequest, res: Response) => {
+  const userId = req.user!.id;
+  const { traits } = req.body;
+
+  if (!Array.isArray(traits)) {
+    return res.status(400).json({ error: "traits must be an array" });
+  }
+
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { traits },
       select: userSelect,
     });
 

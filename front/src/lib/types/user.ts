@@ -1,3 +1,5 @@
+import type { Trait } from '../interfaces';
+
 export interface User {
   id: number;
   firstName: string;
@@ -16,4 +18,6 @@ export interface UserContextType {
   user: User | null;
   loading: boolean;
   refreshUser: () => Promise<void>;
+  traits: Trait[];
+  saveTraits: (traits: Trait[]) => Promise<void>;
 }

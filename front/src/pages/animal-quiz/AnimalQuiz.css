@@ -1,0 +1,260 @@
+.quiz-page {
+  width: 100%;
+  max-width: 1024px;
+  padding: 1rem 1rem 100px 1rem;
+}
+
+.quiz-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quiz-progress-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quiz-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.quiz-counter {
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.quiz-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: quizSlideIn 0.25s ease;
+}
+
+@keyframes quizSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.quiz-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.quiz-answer {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  width: 100%;
+}
+
+.quiz-answer:hover {
+  border-color: var(--primary);
+  background: var(--muted);
+}
+
+.quiz-answer.selected {
+  border-color: var(--primary);
+  background: var(--muted);
+}
+
+.quiz-answer-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 0.375rem;
+  background: var(--background);
+  font-size: 0.78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.quiz-answer.selected .quiz-answer-letter {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.quiz-answer-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+@media (max-width: 768px) {
+  .quiz-container h1 {
+    display: none;
+  }
+
+  .quiz-results h1 {
+    display: inline;
+  }
+
+  .quiz-compatible-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .quiz-answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quiz-actions {
+    flex-direction: row-reverse;
+  }
+
+  .quiz-actions > * {
+    flex: 1;
+  }
+
+  .quiz-compatible-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quiz-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: quizSlideIn 0.25s ease;
+}
+
+.quiz-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-trait {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.quiz-trait-name {
+  font-weight: 600;
+}
+
+.quiz-compatible {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.quiz-compatible-empty {
+  font-size: 0.88rem;
+}
+
+.quiz-compatible-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.quiz-animal-card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: 0.75rem;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  width: 100%;
+}
+
+.quiz-animal-card:hover {
+  border-color: var(--primary);
+}
+
+.quiz-animal-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.quiz-animal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.quiz-animal-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quiz-animal-species {
+  font-size: 0.8rem;
+}
+
+.quiz-animal-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.quiz-animal-trait {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}

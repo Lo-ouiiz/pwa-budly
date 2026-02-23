@@ -1,5 +1,32 @@
 export type ConservationStatus = 'LC' | 'NT' | 'VU' | 'EN' | 'CR';
 export type SponsorshipStatus = 'ACTIF' | 'EN_PAUSE' | 'ANNULE' | 'EXPIRE';
+export type Trait =
+  | 'Solitaire'
+  | 'Sociable'
+  | 'Affectueux'
+  | 'Territorial'
+  | 'Protecteur'
+  | 'Indépendant'
+  | 'Amical'
+  | 'Curieux'
+  | 'Paresseux'
+  | 'Energique'
+  | 'Joueur'
+  | 'Endormi'
+  | 'Timide'
+  | 'Audacieux'
+  | 'Colérique'
+  | 'Calme'
+  | 'Sensible'
+  | 'Méfiant'
+  | 'Joyeux'
+  | 'Drôle'
+  | 'Grognon'
+  | 'Mystérieux'
+  | 'Fier'
+  | 'Arrogant'
+  | 'Charmant'
+  | 'Majestueux';
 
 export interface Animal {
   age: number;
