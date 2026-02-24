@@ -1,5 +1,7 @@
 import type { Trait } from '../interfaces';
 
+export type UserRole = 'USER' | 'ZOO_ADMIN' | 'ZOO_USER';
+
 export interface User {
   id: number;
   firstName: string;
