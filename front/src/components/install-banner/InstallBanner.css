@@ -1,0 +1,122 @@
+.install-banner {
+  position: fixed;
+  z-index: 60;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.625rem 1rem;
+  animation: bannerSlideDown 0.25s ease;
+}
+
+@media (max-width: 767px) {
+  .install-banner {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .install-banner ~ .nav-mobile-top {
+    top: 3.5rem;
+  }
+
+  .install-banner-desc {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .install-banner {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: bannerSlideUp 0.25s ease;
+  }
+}
+
+@keyframes bannerSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bannerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.install-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.install-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.install-banner-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.install-banner-desc {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.install-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+
+.install-banner-btn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.875rem;
+  border-radius: 0.5rem;
+  background: var(--primary-foreground);
+  color: var(--primary);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.install-banner-btn:hover {
+  opacity: 0.85;
+}
+
+.install-banner-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--primary-foreground);
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0.25rem;
+  transition: opacity 0.15s;
+}
+
+.install-banner-close:hover {
+  opacity: 1;
+}

@@ -147,3 +147,7 @@
 .nav-mobile-item:hover {
   opacity: 0.85;
 }
+
+.install-banner ~ .nav-mobile-top {
+  top: 3rem;
+}

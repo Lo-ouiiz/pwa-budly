@@ -1,5 +1,6 @@
 import { HouseIcon, MagnifyingGlassIcon, PawPrintIcon, UserIcon } from '@phosphor-icons/react';
 import { NavLink } from 'react-router-dom';
+import InstallBanner from '../install-banner/InstallBanner';
 import './AppMenu.css';
 
 const navItems = [
@@ -30,6 +31,7 @@ const navItems = [
 export default function AppMenu() {
   return (
     <>
+      <InstallBanner />
       <header className="nav-desktop">
         <div className="nav-desktop-inner">
           <NavLink to="/">
