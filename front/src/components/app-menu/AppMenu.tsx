@@ -35,7 +35,7 @@ export default function AppMenu() {
       <header className="nav-desktop">
         <div className="nav-desktop-inner">
           <NavLink to="/">
-            <img src="/src/assets/logo.svg" alt="logo" />
+            <img src="/logo.svg" alt="logo" />
           </NavLink>
           <nav className="nav-desktop-links">
             {navItems
@@ -66,7 +66,7 @@ export default function AppMenu() {
         </div>
       </header>
       <header className="nav-mobile-top">
-        <img src="/src/assets/logo.svg" alt="logo" />
+        <img src="/logo.svg" alt="logo" />
       </header>
       <nav className="nav-mobile">
         <ul className="nav-mobile-list">
