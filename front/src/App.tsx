@@ -16,6 +16,7 @@ import AnimalDetail from './pages/animal-details/AnimalDetails';
 import Sponsorships from './pages/sponsorships/Sponsorships';
 import Payment from './pages/payment/Payment';
 import Success from './pages/payment/success/Success';
+import ProLayout from './components/layout/ProLayout';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -77,6 +78,9 @@ function AppRoutes() {
         />
         <Route path="connexion" element={<Auth />} />
         <Route path="*" element={<NotFound />} />
+      </Route>
+      <Route path="/pro" element={<ProLayout />}>
+        <Route index element={<Auth isPro={true} />} />
       </Route>
     </Routes>
   );
