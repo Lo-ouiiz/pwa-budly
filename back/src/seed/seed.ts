@@ -92,9 +92,11 @@ async function main() {
       postalCode: "38100",
       city: "Grenoble",
       country: "France",
-      logo: "https://www.pngmart.com/files/23/Zoo-PNG.png",
+      logo: "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQxtDJWp1Hp1vsMyd2VkDmzfjGUrXTP9cqFuoh",
       labels: ["National", "Conservation"],
-      photos: [],
+      photos: [
+        "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQsjcueLoYotiBIKxUQduJprjgaE7Rhb1W8ZF0",
+      ],
       description:
         "Zoo alpin engagé dans la conservation des espèces menacées.",
     },
@@ -110,9 +112,11 @@ async function main() {
       postalCode: "69001",
       city: "Lyon",
       country: "France",
-      logo: "https://www.pngmart.com/files/23/Zoo-PNG.png",
+      logo: "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQfbZGujBWQxvHVrfa9tC5NhT1nZ68wdeRF7S2",
       labels: ["Régional"],
-      photos: [],
+      photos: [
+        "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQyRXXbMFSi62oBwL3kxIeuZAhNPstjHmTYRv1",
+      ],
       description: "Parc zoologique urbain à vocation pédagogique.",
     },
   });
