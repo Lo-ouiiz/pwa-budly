@@ -7,6 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useUser } from '@/lib/hooks/useUser';
 import './AnimalQuiz.css';
 import AnimalCard from '@/components/animal-card/AnimalCard';
+import { API_BASE_URL } from '@/lib/constant';
 
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D'];
 
@@ -57,7 +58,7 @@ export default function AnimalQuiz() {
     params.set('limit', '20');
 
     try {
-      const res = await fetch(`http://localhost:3000/animals?${params.toString()}`);
+      const res = await fetch(`${API_BASE_URL}/animals?${params.toString()}`);
       const data = await res.json();
       const sorted = (data.items ?? [])
         .map((animal: Animal) => ({

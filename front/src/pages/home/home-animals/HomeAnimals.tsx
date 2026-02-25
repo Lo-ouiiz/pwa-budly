@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import { API_BASE_URL } from '@/lib/constant';
 import type { Animal, RequestDataAnimals } from '@/lib/interfaces';
+import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,7 +22,7 @@ export default function HomeAnimals() {
   const limit = 10;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/animals?limit=${limit}`)
+    fetch(`${API_BASE_URL}/animals?limit=${limit}`)
       .then((res) => res.json())
       .then((data: RequestDataAnimals) => {
         setAnimals(data.items);

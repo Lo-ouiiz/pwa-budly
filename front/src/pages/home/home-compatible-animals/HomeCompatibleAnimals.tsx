@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import { API_BASE_URL } from '@/lib/constant';
 import type { Animal, Trait } from '@/lib/interfaces';
 import { useUser } from '@/lib/hooks/useUser';
+import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
   Carousel,
@@ -25,7 +26,7 @@ export default function HomeCompatibleAnimals() {
     traits.forEach((t) => params.append('traits', t));
     params.set('limit', '20');
 
-    fetch(`http://localhost:3000/animals?${params.toString()}`)
+    fetch(`${API_BASE_URL}/animals?${params.toString()}`)
       .then((res) => res.json())
       .then((data) => {
         const sorted = (data.items ?? [])

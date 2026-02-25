@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '@/lib/constant';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Elements } from '@stripe/react-stripe-js';
@@ -34,7 +35,7 @@ export default function Payment() {
 
     hasFetched.current = true;
 
-    fetch('http://localhost:3000/stripe/create-payment-intent', {
+    fetch(API_BASE_URL + '/stripe/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

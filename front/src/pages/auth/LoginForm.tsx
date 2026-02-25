@@ -1,14 +1,15 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '@/lib/constant';
+import { authStore } from '@/lib/auth';
+import { useUser } from '@/lib/hooks/useUser';
+import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
+import * as z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Field, FieldLabel } from '@/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
-import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { authStore } from '@/lib/auth';
-import * as z from 'zod';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useUser } from '@/lib/hooks/useUser';
 
 const loginSchema = z.object({
   email: z.email({ message: 'Email invalide' }),
@@ -43,7 +44,7 @@ export default function LoginForm() {
     setErrorMsg('');
 
     try {
-      const res = await fetch('http://localhost:3000/auth/login', {
+      const res = await fetch(API_BASE_URL + '/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

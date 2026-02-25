@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { API_BASE_URL } from '@/lib/constant';
 import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
@@ -22,7 +23,7 @@ export default function HomeZoos() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/zoos')
+    fetch(API_BASE_URL + '/zoos')
       .then((res) => res.json())
       .then((data: Zoo[]) => {
         setZoos(data);

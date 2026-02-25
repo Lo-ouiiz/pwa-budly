@@ -9,6 +9,7 @@ import AnimalHeader from './animal-header/AnimalHeader';
 import AnimalCharacteristics from './animal-characteristics/AnimalCharacteristics';
 import ConservationStatus from '../../components/conservation-status/ConservationStatus';
 import './AnimalDetails.css';
+import { API_BASE_URL } from '@/lib/constant';
 
 export default function AnimalDetail() {
   const location = useLocation();
@@ -24,7 +25,7 @@ export default function AnimalDetail() {
       return () => clearTimeout(timer);
     }
 
-    fetch(`http://localhost:3000/animals/${animalId}`)
+    fetch(`${API_BASE_URL}/animals/${animalId}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Animal not found');

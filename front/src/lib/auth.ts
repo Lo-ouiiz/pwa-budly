@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './constant';
+
 export const authStore = {
   accessToken: null as string | null,
   isReady: false,
@@ -5,7 +7,7 @@ export const authStore = {
 
 export async function initAuth() {
   try {
-    const res = await fetch('http://localhost:3000/auth/refresh', {
+    const res = await fetch(API_BASE_URL + '/auth/refresh', {
       method: 'POST',
       credentials: 'include',
     });
@@ -35,7 +37,7 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   });
 
   if (res.status === 401) {
-    const refresh = await fetch('http://localhost:3000/auth/refresh', {
+    const refresh = await fetch(API_BASE_URL + '/auth/refresh', {
       method: 'POST',
       credentials: 'include',
     });

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { API_BASE_URL } from '@/lib/constant';
 import type { Animal, RequestDataAnimals } from '@/lib/interfaces';
 import { FunnelIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import FilterSidebar from './filter-sidebar/FilterSidebar';
 import AnimalGrid from './animal-grid/AnimalGrid';
 import Pagination from './pagination/Pagination';
@@ -53,7 +54,7 @@ export default function Search() {
     const fetchSpecies = async () => {
       setLoadingSpecies(true);
       try {
-        const res = await fetch('http://localhost:3000/species');
+        const res = await fetch(API_BASE_URL + '/species');
         const data: Species[] = await res.json();
         setAvailableSpecies(data);
       } catch (err) {
@@ -69,7 +70,7 @@ export default function Search() {
     const fetchZoos = async () => {
       setLoadingZoos(true);
       try {
-        const res = await fetch('http://localhost:3000/zoos');
+        const res = await fetch(API_BASE_URL + '/zoos');
         const data: Zoo[] = await res.json();
         setAvailableZoos(data);
       } catch (err) {
@@ -104,7 +105,7 @@ export default function Search() {
           filters.zoos.forEach((zooId) => params.append('zooId', String(zooId)));
           filters.traits.forEach((trait) => params.append('traits', trait));
 
-          const res = await fetch(`http://localhost:3000/animals?${params.toString()}`);
+          const res = await fetch(`${API_BASE_URL}/animals?${params.toString()}`);
           const data: RequestDataAnimals = await res.json();
           setAnimals(data.items);
           setTotalPages(data.totalPages);

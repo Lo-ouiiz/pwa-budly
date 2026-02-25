@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { fetchWithAuth } from '@/lib/auth';
+import { API_BASE_URL } from '@/lib/constant';
 import { type Sponsorship } from '@/lib/interfaces';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
-import TabMedias from './tab-medias/TabMedias';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import TabDon from './tab-don/TabDon';
 import TabSante from './tab-sante/TabSante';
 import TabInfos from './tab-infos/TabInfos';
+import TabMedias from './tab-medias/TabMedias';
 import './Animals.css';
 
 const firstPhoto = (photos: string[], fallback = '/placeholder-animal.jpg') =>
@@ -19,7 +20,7 @@ export default function Animals() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   useEffect(() => {
-    fetchWithAuth('http://localhost:3000/sponsorships/user/me')
+    fetchWithAuth(API_BASE_URL + '/sponsorships/user/me')
       .then((res) => {
         if (!res.ok) throw new Error('Erreur réseau');
         return res.json() as Promise<Sponsorship[]>;

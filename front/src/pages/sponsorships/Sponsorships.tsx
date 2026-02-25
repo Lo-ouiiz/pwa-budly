@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { API_BASE_URL } from '@/lib/constant';
 import type { SponsorshipPlan } from '@/lib/interfaces';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import SponsorshipHero from '../../components/sponsorship-hero/SponsorshipHero';
@@ -27,7 +28,7 @@ export default function Sponsorships() {
       return;
     }
 
-    fetch(`http://localhost:3000/plans?zooId=${zooId}`)
+    fetch(`${API_BASE_URL}/plans?zooId=${zooId}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Plans not found');

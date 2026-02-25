@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '@/lib/constant';
+import { fetchWithAuth } from '@/lib/auth';
+import { WarningCircleIcon, CheckIcon } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { useElements, useStripe } from '@stripe/react-stripe-js';
 import SponsorshipHero from '@/components/sponsorship-hero/SponsorshipHero';
 import OrderSummary from '../order-summary/OrderSummary';
 import PersonalInfoForm from '../personal-info-form/PersonalInfoForm';
 import PaymentMethodForm from '../payment-method-form/PaymentMethodForm';
-import { WarningCircleIcon, CheckIcon } from '@phosphor-icons/react';
-import { fetchWithAuth } from '@/lib/auth';
 import './PaymentForm.css';
 
 interface PaymentFormProps {
@@ -60,7 +61,7 @@ export default function PaymentForm({
   });
 
   const updateUserIfNeeded = async () => {
-    await fetchWithAuth('http://localhost:3000/users/me', {
+    await fetchWithAuth(API_BASE_URL + '/users/me', {
       method: 'PATCH',
       body: JSON.stringify({
         street: personalInfo.street,
@@ -78,7 +79,7 @@ export default function PaymentForm({
     endDate.setMonth(endDate.getMonth() + durationMonths);
     console.log(animalId, planId, planPrice);
     try {
-      const response = await fetchWithAuth('http://localhost:3000/sponsorships', {
+      const response = await fetchWithAuth(API_BASE_URL + '/sponsorships', {
         method: 'POST',
         body: JSON.stringify({
           animalId: animalId,

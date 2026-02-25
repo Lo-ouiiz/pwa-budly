@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '@/lib/constant';
 import { Button } from '@/components/ui/button';
 import { authStore } from '@/lib/auth';
 
@@ -7,7 +8,7 @@ export default function Profile() {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:3000/auth/logout', {
+      await fetch(API_BASE_URL + '/auth/logout', {
         method: 'POST',
         credentials: 'include',
       });

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm, type SubmitHandler } from 'react-hook-form';
+import { authStore } from '@/lib/auth';
+import { API_BASE_URL } from '@/lib/constant';
+import { useUser } from '@/lib/hooks/useUser';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeftIcon, EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
-import { authStore } from '@/lib/auth';
 import { Button } from '@/components/ui/button';
 import { Field, FieldLabel } from '@/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
-import { useUser } from '@/lib/hooks/useUser';
 
 type Props = {
   step: number;
@@ -93,7 +94,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
         role: 'USER',
       };
 
-      const res = await fetch('http://localhost:3000/users', {
+      const res = await fetch(API_BASE_URL + '/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -104,7 +105,7 @@ export default function RegisterForm({ step, onBack, onNext }: Props) {
         throw new Error(err.message || 'Erreur lors de la création du compte');
       }
 
-      const loginRes = await fetch('http://localhost:3000/auth/login', {
+      const loginRes = await fetch(API_BASE_URL + '/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: data.email, password: data.password }),

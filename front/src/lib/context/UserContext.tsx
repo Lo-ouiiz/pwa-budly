@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import { API_BASE_URL } from '../constant';
 import { authStore } from '../auth';
 import type { User, UserContextType } from '../types/user';
 import type { Trait } from '../interfaces';
@@ -8,7 +9,7 @@ const TRAITS_STORAGE_KEY = 'quiz_traits_pending';
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 async function saveTraitsToApi(traits: Trait[], accessToken: string) {
-  await fetch('http://localhost:3000/users/me/traits', {
+  await fetch(API_BASE_URL + '/users/me/traits', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +39,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/users/me', {
+      const response = await fetch(API_BASE_URL + '/users/me', {
         headers: { Authorization: `Bearer ${authStore.accessToken}` },
       });
 
