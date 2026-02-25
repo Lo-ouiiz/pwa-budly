@@ -12,7 +12,7 @@
 .home-quiz-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/src/assets/home-bg.png');
+  background-image: url('/images/home-bg.jpeg');
   background-size: cover;
   background-position: right;
 }
