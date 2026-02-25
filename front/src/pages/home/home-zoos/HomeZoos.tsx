@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '@/lib/constant';
-import { ArrowLeftIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowRightIcon, MapPinIcon } from '@phosphor-icons/react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
 import {
   Carousel,
   CarouselContent,
@@ -16,6 +18,8 @@ type Zoo = {
   name: string;
   logo: string;
   photos: string[];
+  slug: string;
+  city?: string;
 };
 
 export default function HomeZoos() {
@@ -40,7 +44,6 @@ export default function HomeZoos() {
         <div className="home-zoos-header">
           <h1>Nos zoos partenaires</h1>
         </div>
-
         <Carousel opts={{ align: 'start', dragFree: true }} className="home-zoos-carousel">
           <CarouselContent>
             {[...Array(3)].map((_, i) => (
@@ -70,26 +73,45 @@ export default function HomeZoos() {
       <div className="home-zoos-header">
         <h1>Nos zoos partenaires</h1>
       </div>
-
       <Carousel opts={{ align: 'start', dragFree: true }} className="home-zoos-carousel">
         <CarouselContent>
           {zoos.map((zoo) => (
             <CarouselItem key={zoo.id} className="home-zoos-carousel-item">
-              <div className="home-zoos-card" style={{ backgroundImage: `url(${zoo.photos[0]})` }}>
-                <div className="home-zoos-card-footer">
-                  <p className="home-zoos-card-title">{zoo.name}</p>
-                  <img src={zoo.logo} alt={zoo.name} className="home-zoos-card-logo" />
+              <Link to="/" className="home-zoos-card">
+                <div
+                  className="home-zoos-card-image"
+                  style={{
+                    backgroundImage: zoo.photos[0] ? `url(${zoo.photos[0]})` : 'none',
+                    backgroundColor: zoo.photos[0] ? 'transparent' : 'var(--muted)',
+                  }}
+                />
+                <div className="home-zoos-card-body">
+                  <div className="home-zoos-card-content">
+                    <div className="home-zoos-card-info-wrapper">
+                      <span className="home-zoos-card-title">{zoo.name}</span>
+                      {zoo.city && (
+                        <div className="home-zoos-card-info">
+                          <MapPinIcon weight="fill" className="home-zoos-card-icon" />
+                          <span className="home-zoos-card-info-text">{zoo.city}</span>
+                        </div>
+                      )}
+                    </div>
+                    {zoo.logo && (
+                      <img src={zoo.logo} alt={zoo.name} className="home-zoos-card-logo" />
+                    )}
+                  </div>
+                  <Button variant="secondary" size="sm" className="home-zoos-card-button">
+                    Découvrir
+                  </Button>
                 </div>
-              </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>
-
         <div className="home-zoos-arrows">
           <CarouselPrevious className="home-zoos-carousel-prev">
             <ArrowLeftIcon size={20} weight="bold" />
           </CarouselPrevious>
-
           <CarouselNext className="home-zoos-carousel-next">
             <ArrowRightIcon size={20} weight="bold" />
           </CarouselNext>

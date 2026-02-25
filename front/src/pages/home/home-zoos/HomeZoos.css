@@ -49,61 +49,142 @@
 }
 
 .home-zoos-carousel-item {
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 
 @media (min-width: 640px) {
   .home-zoos-carousel-item {
-    flex-basis: 40%;
+    flex-basis: 45%;
   }
 }
 
 @media (min-width: 1024px) {
   .home-zoos-carousel-item {
-    flex-basis: 33%;
+    flex-basis: 30%;
   }
 }
 
-.home-zoos-card {
-  height: 250px;
-  border-radius: 1rem;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: flex-end;
+@media (min-width: 1280px) {
+  .home-zoos-carousel-item {
+    flex-basis: 23%;
+  }
 }
 
-.home-zoos-card-footer {
-  width: 100%;
-  background-color: white;
+/* Style similaire à AnimalCard */
+.home-zoos-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--card);
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.home-zoos-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.home-zoos-card-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--muted);
+}
+
+.home-zoos-card-body {
   padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.15rem;
+  flex: 1;
 }
 
-.home-zoos-card-logo {
-  display: none;
+.home-zoos-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-@media (min-width: 768px) {
-  .home-zoos-card-footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .home-zoos-card-logo {
-    display: block;
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-  }
+.home-zoos-card-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .home-zoos-card-title {
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--card-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.home-zoos-card-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-zoos-card-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.home-zoos-card-info-text {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-zoos-card-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.home-zoos-card-button {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .home-zoos-card {
+    height: 300px;
+  }
+
+  .home-zoos-card-image {
+    height: 220px;
+  }
+
+  .home-zoos-card-button {
+    display: flex;
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-zoos-card-logo {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-zoos-card {
+    height: 350px;
+  }
+
+  .home-zoos-card-image {
+    height: 240px;
+  }
 }
