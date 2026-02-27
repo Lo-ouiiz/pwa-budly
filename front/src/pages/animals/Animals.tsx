@@ -57,6 +57,7 @@ export default function Animals() {
   if (!sponsorships.length) {
     return (
       <div className="animals-empty">
+        <h1 className="animals-title">Mon tableau de bord</h1>
         <p>Vous n'avez aucun parrainage actif pour le moment.</p>
       </div>
     );
