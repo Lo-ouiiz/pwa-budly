@@ -37,17 +37,17 @@ export default function Success() {
 
         <div className="success-details">
           <div className="success-detail-row">
-            <PawPrintIcon size={20} weight="regular" />
+            <PawPrintIcon size={20} weight="fill" />
             <span>Animal parrainé : {animalName}</span>
           </div>
           <div className="success-detail-row">
-            <ReceiptIcon size={20} weight="regular" />
+            <ReceiptIcon size={20} weight="fill" />
             <span>
               Formule : {planName} - {amount}€
             </span>
           </div>
           <div className="success-detail-row">
-            <CalendarIcon size={20} weight="regular" />
+            <CalendarIcon size={20} weight="fill" />
             <span>Parrainage actif jusqu'au {formattedEndDate}</span>
           </div>
         </div>

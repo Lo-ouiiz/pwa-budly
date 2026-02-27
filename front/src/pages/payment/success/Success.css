@@ -1,5 +1,9 @@
 .success-page {
   background: var(--background);
+  padding-bottom: 100px;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .success-content {
@@ -7,6 +11,11 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  padding: 1rem;
+}
+
+.success-content h1 {
+  text-align: center;
 }
 
 .success-icon {
@@ -37,7 +46,7 @@
 }
 
 .success-details {
-  background: var(--muted);
+  border: 2px solid var(--border);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   width: 100%;
@@ -54,6 +63,10 @@
   font-size: 0.95rem;
 }
 
+.success-detail-row svg {
+  color: var(--primary);
+}
+
 .success-actions {
   display: grid;
   grid-template-columns: 1fr;
@@ -62,8 +75,12 @@
 }
 
 @media (min-width: 768px) {
+  .success-page {
+    padding-bottom: 0;
+  }
+
   .success-content {
-    margin-left: 40vw;
+    margin-left: min(410px, 40vw);
     overflow-y: auto;
     padding: 1rem 1.5rem;
   }
