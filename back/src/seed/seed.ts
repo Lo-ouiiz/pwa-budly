@@ -13,7 +13,7 @@ const animalsData = JSON.parse(
 async function main() {
   console.log("🌱 Seeding...");
 
-  const passwordHash = await bcrypt.hash("mdp123/", 10);
+  const passwordHash = await bcrypt.hash("Motdepasse123/", 10);
 
   // =====================
   // USERS
