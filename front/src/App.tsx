@@ -17,6 +17,7 @@ import Sponsorships from './pages/sponsorships/Sponsorships';
 import Payment from './pages/payment/Payment';
 import Success from './pages/payment/success/Success';
 import ProLayout from './components/layout/ProLayout';
+import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -48,6 +49,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="/quiz" element={<AnimalQuiz />} />
         <Route path="recherche" element={<Search />} />
         <Route path="animal/:slug" element={<AnimalDetail />} />
         <Route path="offres-parrainage/" element={<Sponsorships />} />
