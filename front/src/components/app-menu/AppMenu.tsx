@@ -13,7 +13,7 @@ const navItems = [
     desktopVariant: 'link',
   },
   {
-    label: 'Mes animaux',
+    label: 'Tableau de bord',
     icon: PawPrintIcon,
     href: '/animaux',
     showOnDesktop: true,
@@ -80,8 +80,12 @@ export default function AppMenu() {
                     isActive ? 'nav-mobile-item active' : 'nav-mobile-item'
                   }
                 >
-                  <Icon size={24} weight="regular" />
-                  <span>{item.label}</span>
+                  {({ isActive }) => (
+                    <>
+                      <Icon size={24} weight={isActive ? 'fill' : 'regular'} />
+                      <span>{item.label}</span>
+                    </>
+                  )}
                 </NavLink>
               </li>
             );
