@@ -1,7 +1,6 @@
 .nav-desktop {
   display: none;
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   z-index: 50;
@@ -147,7 +146,20 @@
 .nav-mobile-item:hover {
   opacity: 0.85;
 }
-
 .install-banner ~ .nav-mobile-top {
-  top: 3rem;
+  top: 3.15rem;
+}
+
+.install-banner ~ .nav-desktop {
+  top: 3.75rem;
+}
+
+body:has(.install-banner) main {
+  padding-top: calc(3.5rem + 3.15rem);
+}
+
+@media (min-width: 768px) {
+  body:has(.install-banner) main {
+    padding-top: calc(3.5rem + 3.75rem);
+  }
 }

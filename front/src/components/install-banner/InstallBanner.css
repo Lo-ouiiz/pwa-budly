@@ -25,10 +25,15 @@
 
 @media (min-width: 768px) {
   .install-banner {
-    bottom: 0;
+    top: 0;
+    bottom: auto;
     left: 0;
     right: 0;
-    animation: bannerSlideUp 0.25s ease;
+    animation: bannerSlideDown 0.25s ease;
+  }
+
+  .install-banner ~ .nav-desktop {
+    top: 3.5rem;
   }
 }
 
@@ -36,17 +41,6 @@
   from {
     opacity: 0;
     transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bannerSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
   }
   to {
     opacity: 1;
