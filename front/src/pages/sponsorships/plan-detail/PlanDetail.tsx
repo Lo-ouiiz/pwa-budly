@@ -1,4 +1,4 @@
-import { CheckIcon } from '@phosphor-icons/react';
+import { CheckIcon, PlusIcon } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import './PlanDetail.css';
 
@@ -61,8 +61,18 @@ export default function PlanDetail({
               <span>{benefit}</span>
             </li>
           ))}
+          <li className="benefit-item-highlight">
+            <div className="benefit-highlight-icon">
+              <PlusIcon size={16} weight="bold" className="benefit-icon" />
+            </div>
+            <span>Suivi personnalisé Budly</span>
+          </li>
         </ul>
       </div>
+
+      <p className="donation-info">
+        Votre don est reversé à 100% au zoo, hors frais bancaires éventuels
+      </p>
 
       <div className="plan-actions">
         <Button size="lg" className="sponsor-button" onClick={onSubscribe}>
