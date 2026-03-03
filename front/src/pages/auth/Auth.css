@@ -1,12 +1,14 @@
 .auth-section {
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1024px;
 }
 
 .auth-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
