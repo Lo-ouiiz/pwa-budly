@@ -9,7 +9,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/home/Home';
 import Search from './pages/search/Search';
 import Animals from './pages/animals/Animals';
-import Profile from './pages/Profile';
+import Profile from './pages/profile/Profile';
 import Auth from './pages/auth/Auth';
 import NotFound from './pages/NotFound';
 import AnimalDetail from './pages/animal-details/AnimalDetails';
@@ -18,6 +18,7 @@ import Payment from './pages/payment/Payment';
 import Success from './pages/payment/success/Success';
 import ProLayout from './components/layout/ProLayout';
 import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
+import ComingSoon from './components/coming-soon/ComingSoon';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -75,6 +76,70 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/informations"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/factures"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/recus-fiscaux"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/modifier-mot-de-passe"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/authentification-2fa"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/supprimer-compte"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/notifications"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil/newsletter"
+          element={
+            <ProtectedRoute>
+              <ComingSoon />
             </ProtectedRoute>
           }
         />
