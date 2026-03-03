@@ -22,7 +22,6 @@
   min-width: 0;
 }
 
-/* Mobile : carousel horizontal */
 .animals-chips-list {
   display: flex;
   gap: 0.875rem;
@@ -37,7 +36,6 @@
   display: none;
 }
 
-/* Sur mobile on affiche le carousel directement dans animals-page */
 @media (max-width: 767px) {
   .animals-sidebar {
     display: block;
@@ -49,6 +47,10 @@
 
   .animal-chip {
     scroll-snap-align: start;
+  }
+
+  .animal-hero {
+    border-top: 2px solid var(--border);
   }
 }
 
@@ -104,7 +106,6 @@
     display: none;
   }
 
-  /* Sur desktop, chip en mode ligne */
   .animal-chip {
     flex-direction: row;
     width: 100%;
@@ -136,7 +137,6 @@
   }
 
   .animal-hero {
-    border-top: none;
     padding-top: 0;
   }
 }
@@ -200,7 +200,6 @@
   align-items: center;
   gap: 0.875rem;
   padding: 1rem 0;
-  border-top: 2px solid var(--border);
   animation: fadeSlideIn 0.25s ease;
 }
 
@@ -246,70 +245,13 @@
 }
 
 .animal-tabs-list {
-  display: flex;
-  background: transparent;
-  padding: 0.25rem 0;
-  height: auto;
-  justify-content: flex-start;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  max-width: 100%;
-  border-radius: 0;
-  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
-.animal-tabs-list::-webkit-scrollbar {
-  display: none;
-}
-
-.animal-tab-trigger {
-  background: transparent;
+.tabs-filler {
+  flex: 1;
   border-bottom: 2px solid var(--primary);
-  border-radius: 0.5rem 0.5rem 0 0;
-  padding: 0.5rem 1rem;
-  transition: all 0.2s;
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-weight: 600;
-  margin-bottom: -2px;
-  cursor: pointer;
-}
-
-.animal-tab-trigger[data-state='active'] {
-  border: 2px solid var(--primary);
-  border-bottom: 2px solid var(--background);
-  background: var(--background);
-  box-shadow: none;
-  z-index: 3;
-}
-
-.animal-tab-trigger:hover:not([data-state='active']) {
-  color: var(--foreground);
-}
-
-.animals-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.875rem;
-  padding: 4rem 1.5rem;
-}
-
-.animals-spinner {
-  width: 32px;
-  height: 32px;
-  border: 2.5px solid var(--border);
-  border-top-color: var(--primary);
-  border-radius: 50%;
-  animation: spin 0.75s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  align-self: flex-end;
 }
 
 .animals-empty {
@@ -320,6 +262,6 @@
 .animals-error {
   text-align: center;
   padding: 2rem 1.5rem;
-  color: var(--destructuve);
+  color: var(--destructive);
   font-size: 0.88rem;
 }

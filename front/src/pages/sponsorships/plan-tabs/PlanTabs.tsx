@@ -20,7 +20,7 @@ export default function PlanTabs({
 }: PlanTabsProps) {
   return (
     <Tabs value={selectedPlan} onValueChange={onPlanChange} className="sponsorship-tabs">
-      <TabsList className="sponsorship-tabs-list">
+      <TabsList variant="line" className="sponsorship-tabs-list">
         {plans.map((plan) => (
           <TabsTrigger key={plan.id} value={plan.id.toString()} className="sponsorship-tab">
             <div className="tab-content">
@@ -29,8 +29,8 @@ export default function PlanTabs({
             </div>
           </TabsTrigger>
         ))}
+        <div className="tabs-filler" />
       </TabsList>
-
       {plans.map((plan) => (
         <TabsContent key={plan.id} value={plan.id.toString()} className="sponsorship-tab-content">
           <PlanDetail

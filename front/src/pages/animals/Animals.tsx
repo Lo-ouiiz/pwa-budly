@@ -109,7 +109,7 @@ export default function Animals() {
             </div>
 
             <Tabs defaultValue="medias" className="animal-tabs">
-              <TabsList className="animal-tabs-list">
+              <TabsList variant="line" className="animal-tabs-list">
                 <TabsTrigger value="medias" className="animal-tab-trigger">
                   Fil d'actualité
                 </TabsTrigger>
@@ -122,6 +122,7 @@ export default function Animals() {
                 <TabsTrigger value="infos" className="animal-tab-trigger">
                   Informations {selected.animal.name}
                 </TabsTrigger>
+                <div className="tabs-filler" />
               </TabsList>
 
               <TabsContent value="medias">
