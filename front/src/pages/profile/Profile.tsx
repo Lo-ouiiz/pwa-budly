@@ -101,10 +101,22 @@ export default function Profile() {
   return (
     <div className="profile-page">
       <div className="profile-header">
-        <div className="profile-avatar-container">
-          <img src={profileImage} alt="Photo de profil" className="profile-avatar" />
+        <div className="profile-header-left">
+          <div className="profile-avatar-container">
+            <img src={profileImage} alt="Photo de profil" className="profile-avatar" />
+          </div>
+          {user && <h1 className="profile-name">Bonjour {user.firstName}</h1>}
         </div>
-        {user && <h1 className="profile-name">Bonjour {user.firstName}</h1>}
+        <div className="profile-logout profile-logout-desktop">
+          <Button
+            onClick={handleLogout}
+            variant="destructive-outline"
+            className="w-full justify-center gap-2"
+          >
+            <SignOutIcon size={20} />
+            Déconnexion
+          </Button>
+        </div>
       </div>
 
       <div className="profile-sections">
@@ -133,7 +145,7 @@ export default function Profile() {
         ))}
       </div>
 
-      <div className="profile-logout">
+      <div className="profile-logout profile-logout-mobile">
         <Button
           onClick={handleLogout}
           variant="destructive-outline"
