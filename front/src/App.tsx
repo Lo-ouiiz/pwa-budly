@@ -20,6 +20,7 @@ import ProLayout from './components/layout/ProLayout';
 import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
 import ComingSoon from './components/coming-soon/ComingSoon';
 import Settings from './pages/settings/Settings';
+import LegalNotice from './pages/legal-notice/LegalNotice';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -149,7 +150,7 @@ function AppRoutes() {
         <Route path="aide" element={<ComingSoon />} />
         <Route path="contact" element={<ComingSoon />} />
         <Route path="signaler" element={<ComingSoon />} />
-        <Route path="mentions-legales" element={<ComingSoon />} />
+        <Route path="mentions-legales" element={<LegalNotice />} />
         <Route path="cgu" element={<ComingSoon />} />
         <Route path="politique-confidentialite" element={<ComingSoon />} />
         <Route path="*" element={<NotFound />} />
