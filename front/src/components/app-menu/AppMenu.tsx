@@ -1,8 +1,14 @@
-import { HouseIcon, MagnifyingGlassIcon, PawPrintIcon, UserIcon } from '@phosphor-icons/react';
+import {
+  BellIcon,
+  GearIcon,
+  HouseIcon,
+  MagnifyingGlassIcon,
+  PawPrintIcon,
+  UserIcon,
+} from '@phosphor-icons/react';
 import { NavLink } from 'react-router-dom';
 import InstallBanner from '../install-banner/InstallBanner';
 import './AppMenu.css';
-
 const navItems = [
   { label: 'Accueil', icon: HouseIcon, href: '/', showOnDesktop: false },
   {
@@ -23,11 +29,10 @@ const navItems = [
     label: 'Mon profil',
     icon: UserIcon,
     href: '/profil',
-    showOnDesktop: true,
-    desktopVariant: 'button',
+    showOnDesktop: false,
+    desktopVariant: 'link',
   },
 ];
-
 export default function AppMenu() {
   return (
     <>
@@ -62,11 +67,32 @@ export default function AppMenu() {
                   </NavLink>
                 );
               })}
+            <div className="nav-desktop-actions">
+              <NavLink to="/profil" className="nav-desktop-icon" aria-label="Profil">
+                {({ isActive }) => <UserIcon size={24} weight={isActive ? 'duotone' : 'regular'} />}
+              </NavLink>
+              <button className="nav-desktop-icon" aria-label="Notifications">
+                <BellIcon size={24} weight="regular" />
+              </button>
+              <NavLink to="/parametres" className="nav-desktop-icon" aria-label="Paramètres">
+                {({ isActive }) => <GearIcon size={24} weight={isActive ? 'duotone' : 'regular'} />}
+              </NavLink>
+            </div>
           </nav>
         </div>
       </header>
       <header className="nav-mobile-top">
-        <img src="/logo/logo.svg" alt="logo" />
+        <NavLink to="/">
+          <img src="/logo/logo.svg" alt="logo" />
+        </NavLink>
+        <div className="nav-mobile-top-actions">
+          <button className="nav-mobile-top-icon" aria-label="Notifications">
+            <BellIcon size={24} weight="regular" />
+          </button>
+          <NavLink to="/parametres" className="nav-mobile-top-icon" aria-label="Paramètres">
+            {({ isActive }) => <GearIcon size={24} weight={isActive ? 'duotone' : 'regular'} />}
+          </NavLink>
+        </div>
       </header>
       <nav className="nav-mobile">
         <ul className="nav-mobile-list">

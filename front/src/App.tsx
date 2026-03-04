@@ -19,6 +19,7 @@ import Success from './pages/payment/success/Success';
 import ProLayout from './components/layout/ProLayout';
 import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
 import ComingSoon from './components/coming-soon/ComingSoon';
+import Settings from './pages/settings/Settings';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -144,6 +145,13 @@ function AppRoutes() {
           }
         />
         <Route path="connexion" element={<Auth />} />
+        <Route path="parametres" element={<Settings />} />
+        <Route path="aide" element={<ComingSoon />} />
+        <Route path="contact" element={<ComingSoon />} />
+        <Route path="signaler" element={<ComingSoon />} />
+        <Route path="mentions-legales" element={<ComingSoon />} />
+        <Route path="cgu" element={<ComingSoon />} />
+        <Route path="politique-confidentialite" element={<ComingSoon />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/pro" element={<ProLayout />}>
