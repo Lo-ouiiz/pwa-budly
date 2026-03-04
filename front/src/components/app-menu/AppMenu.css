@@ -145,8 +145,9 @@
 }
 
 .nav-mobile-item:hover {
-  color: var(--primary);
+  color: var(--primary-foreground);
 }
+
 .install-banner ~ .nav-mobile-top {
   top: 3.15rem;
 }
