@@ -114,7 +114,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.7rem 0.875rem;
+  padding: 0.7rem 0.6rem;
   border-bottom: 2px solid var(--border);
   background: transparent;
   border-left: none;
@@ -135,6 +135,10 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--foreground);
+}
+
+.profile-tile-container svg {
+  color: var(--primary);
 }
 
 .profile-tile-label {

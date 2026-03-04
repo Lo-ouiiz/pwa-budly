@@ -133,10 +133,10 @@ export default function Profile() {
                     className="profile-tile"
                   >
                     <div className="profile-tile-container">
-                      <Icon size={18} />
+                      <Icon size={20} weight="duotone" />
                       <span className="profile-tile-label">{item.label}</span>
                     </div>
-                    <CaretRightIcon size={18} className="profile-tile-chevron" />
+                    <CaretRightIcon size={20} className="profile-tile-chevron" />
                   </button>
                 );
               })}
