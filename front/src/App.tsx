@@ -21,6 +21,7 @@ import AnimalQuiz from './pages/animal-quiz/AnimalQuiz';
 import ComingSoon from './components/coming-soon/ComingSoon';
 import Settings from './pages/settings/Settings';
 import LegalNotice from './pages/legal-notice/LegalNotice';
+import ProDashboard from './pages/pro-dashboard/ProDashboard';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -157,6 +158,14 @@ function AppRoutes() {
       </Route>
       <Route path="/pro" element={<ProLayout />}>
         <Route index element={<Auth isPro={true} />} />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute roles={['ZOO_ADMIN', 'ZOO_USER']}>
+              <ProDashboard />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   );
