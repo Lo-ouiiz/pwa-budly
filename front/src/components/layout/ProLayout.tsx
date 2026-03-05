@@ -1,14 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import './ProLayout.css';
+import ProAppMenu from '../pro-app-menu/ProAppMenu';
 
 export default function ProLayout() {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="pro-header">
-        <div className="pro-header-inner">
-          <img src="/logo/logo-pro.svg" alt="logo pro" className="pro-header-logo" />
-        </div>
-      </header>
+      <ProAppMenu />
       <main className="flex-1 pt-14 flex justify-center">
         <Outlet />
       </main>
