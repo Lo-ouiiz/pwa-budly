@@ -16,68 +16,6 @@ async function main() {
   const passwordHash = await bcrypt.hash("Motdepasse123/", 10);
 
   // =====================
-  // USERS
-  // =====================
-  console.log("Seeding users...");
-
-  const jeanne = await prisma.user.upsert({
-    where: { email: "jeanne.dupont@zoo-grenoble.fr" },
-    update: {},
-    create: {
-      role: "ZOO_ADMIN",
-      firstName: "Jeanne",
-      lastName: "Dupont",
-      email: "jeanne.dupont@zoo-grenoble.fr",
-      passwordHash,
-      birthDate: new Date("1994-10-05"),
-      street: "16 Avenue Benoît Frachon",
-      postalCode: "38100",
-      city: "Grenoble",
-      country: "France",
-      phoneNumber: "0612345678",
-      traits: ["Protecteur", "Calme", "Sensible"],
-    },
-  });
-
-  const marc = await prisma.user.upsert({
-    where: { email: "marc.lemoine@zoo-lyon.fr" },
-    update: {},
-    create: {
-      role: "ZOO_ADMIN",
-      firstName: "Marc",
-      lastName: "Lemoine",
-      email: "marc.lemoine@zoo-lyon.fr",
-      passwordHash,
-      birthDate: new Date("1985-02-12"),
-      street: "5 Rue de la République",
-      postalCode: "69001",
-      city: "Lyon",
-      country: "France",
-      phoneNumber: "0678123456",
-      traits: ["Curieux", "Sociable"],
-    },
-  });
-
-  const claire = await prisma.user.upsert({
-    where: { email: "claire.moreau@mail.com" },
-    update: {},
-    create: {
-      role: "USER",
-      firstName: "Claire",
-      lastName: "Moreau",
-      email: "claire.moreau@mail.com",
-      passwordHash,
-      birthDate: new Date("1991-06-18"),
-      street: "12 Rue des Écoles",
-      postalCode: "75005",
-      city: "Paris",
-      country: "France",
-      phoneNumber: "0600112233",
-      traits: ["Joyeux", "Affectueux"],
-    },
-  });
-
-  // =====================
   // ZOOS
   // =====================
   console.log("Seeding zoos...");
@@ -118,6 +56,70 @@ async function main() {
         "https://xk8r4jpofi.ufs.sh/f/2jsfpuyS7ZLQyRXXbMFSi62oBwL3kxIeuZAhNPstjHmTYRv1",
       ],
       description: "Parc zoologique urbain à vocation pédagogique.",
+    },
+  });
+
+  // =====================
+  // USERS
+  // =====================
+  console.log("Seeding users...");
+
+  const jeanne = await prisma.user.upsert({
+    where: { email: "jeanne.dupont@zoo-grenoble.fr" },
+    update: {},
+    create: {
+      role: "ZOO_ADMIN",
+      firstName: "Jeanne",
+      lastName: "Dupont",
+      email: "jeanne.dupont@zoo-grenoble.fr",
+      passwordHash,
+      birthDate: new Date("1994-10-05"),
+      street: "16 Avenue Benoît Frachon",
+      postalCode: "38100",
+      city: "Grenoble",
+      country: "France",
+      phoneNumber: "0612345678",
+      traits: ["Protecteur", "Calme", "Sensible"],
+      zooId: grenobleZoo.id,
+    },
+  });
+
+  const marc = await prisma.user.upsert({
+    where: { email: "marc.lemoine@zoo-lyon.fr" },
+    update: {},
+    create: {
+      role: "ZOO_ADMIN",
+      firstName: "Marc",
+      lastName: "Lemoine",
+      email: "marc.lemoine@zoo-lyon.fr",
+      passwordHash,
+      birthDate: new Date("1985-02-12"),
+      street: "5 Rue de la République",
+      postalCode: "69001",
+      city: "Lyon",
+      country: "France",
+      phoneNumber: "0678123456",
+      traits: ["Curieux", "Sociable"],
+      zooId: lyonZoo.id,
+    },
+  });
+
+  const claire = await prisma.user.upsert({
+    where: { email: "claire.moreau@mail.com" },
+    update: {},
+    create: {
+      role: "USER",
+      firstName: "Claire",
+      lastName: "Moreau",
+      email: "claire.moreau@mail.com",
+      passwordHash,
+      birthDate: new Date("1991-06-18"),
+      street: "12 Rue des Écoles",
+      postalCode: "75005",
+      city: "Paris",
+      country: "France",
+      phoneNumber: "0600112233",
+      traits: ["Joyeux", "Affectueux"],
     },
   });
 

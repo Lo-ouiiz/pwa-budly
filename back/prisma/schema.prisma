@@ -81,6 +81,9 @@ model User {
   traits        PersonalityTrait[]
   sponsorships  Sponsorship[]
   invoices      Invoice[]
+
+  zooId         Int?
+  zoo           Zoo?      @relation(fields: [zooId], references: [id])
 }
 
 model Zoo {
@@ -99,6 +102,7 @@ model Zoo {
 
   animals       Animal[]
   plans         SponsorshipPlan[]
+  users         User[]
 }
 
 model Animal {
