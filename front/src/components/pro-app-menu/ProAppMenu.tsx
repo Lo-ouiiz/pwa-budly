@@ -136,10 +136,10 @@ export default function ProAppMenu() {
                 return null;
               })}
             <div className="nav-desktop-actions">
-              <NavLink to="/profil" className="nav-desktop-icon" aria-label="Profil">
+              <NavLink to="/pro/profil" className="nav-desktop-icon" aria-label="Profil">
                 {({ isActive }) => <UserIcon size={24} weight={isActive ? 'duotone' : 'regular'} />}
               </NavLink>
-              <NavLink to="/parametres" className="nav-desktop-icon" aria-label="Paramètres">
+              <NavLink to="/pro/parametres" className="nav-desktop-icon" aria-label="Paramètres">
                 {({ isActive }) => <GearIcon size={24} weight={isActive ? 'duotone' : 'regular'} />}
               </NavLink>
             </div>

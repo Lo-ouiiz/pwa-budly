@@ -24,6 +24,7 @@ import LegalNotice from './pages/legal-notice/LegalNotice';
 import ProDashboard from './pages/pro-dashboard/ProDashboard';
 import ProAnimalAdd from './pages/pro-animal-add/ProAnimalAdd';
 import ProAnimalList from './pages/pro-animal-list/ProAnimalList';
+import ProProfile from './pages/pro-profile/ProProfile';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -181,6 +182,22 @@ function AppRoutes() {
           element={
             <ProtectedRoute roles={['ZOO_ADMIN']}>
               <ProAnimalAdd />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profil"
+          element={
+            <ProtectedRoute roles={['ZOO_ADMIN', 'ZOO_USER']}>
+              <ProProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="parametres"
+          element={
+            <ProtectedRoute roles={['ZOO_ADMIN', 'ZOO_USER']}>
+              <Settings />
             </ProtectedRoute>
           }
         />
