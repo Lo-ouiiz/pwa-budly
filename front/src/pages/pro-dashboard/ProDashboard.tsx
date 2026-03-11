@@ -2,11 +2,14 @@ import ComingSoon from '@/components/coming-soon/ComingSoon';
 import { Button } from '@/components/ui/button';
 import { authStore } from '@/lib/auth';
 import { API_BASE_URL } from '@/lib/constant';
+import { useUser } from '@/lib/hooks/useUser';
 import { SignOutIcon } from '@phosphor-icons/react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ProDashboard() {
   const navigate = useNavigate();
+  const user = useUser();
+  console.log(user);
 
   const handleLogout = async () => {
     try {

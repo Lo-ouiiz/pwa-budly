@@ -56,6 +56,7 @@ router.get("/me", auth, async (req: AuthRequest, res: Response) => {
         birthDate: true,
         role: true,
         traits: true,
+        zooId: true,
       },
     });
 

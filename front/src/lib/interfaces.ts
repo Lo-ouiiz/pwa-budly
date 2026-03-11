@@ -103,3 +103,15 @@ export interface Sponsorship {
   animal: Animal;
   plan: Plan;
 }
+
+export interface Species {
+  id: number;
+  name: string;
+  createdAt: string;
+}
+
+export interface SubSpecies {
+  id: number;
+  name: string;
+  speciesId: number;
+}

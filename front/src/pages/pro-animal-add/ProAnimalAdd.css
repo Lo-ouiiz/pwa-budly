@@ -1,0 +1,143 @@
+.pro-animal-add-section {
+  padding: 1rem 1rem 100px 1rem;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.pro-animal-add-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pro-animal-add-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pro-animal-add-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.pro-animal-add-full {
+  grid-column: 1 / -1;
+}
+
+.pro-animal-add-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--input);
+  border-radius: 0.5rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.pro-animal-add-select:focus {
+  border-color: var(--primary);
+}
+
+.pro-animal-add-textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  resize: vertical;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.pro-animal-add-textarea:focus {
+  border-color: var(--primary);
+}
+
+.pro-animal-add-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.pro-animal-add-trait-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.pro-animal-add-trait-chip.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.pro-animal-add-error {
+  font-size: 0.75rem;
+  color: var(--destructive);
+  margin-top: 0.25rem;
+}
+
+.pro-animal-add-required {
+  color: var(--destructive);
+}
+
+.pro-animal-add-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.pro-animal-add-actions button {
+  width: 100%;
+}
+
+.pro-animal-add-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+}
+
+.pro-animal-add-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .pro-animal-add-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pro-animal-add-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pro-animal-add-actions {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / -1;
+  }
+}

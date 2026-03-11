@@ -23,4 +23,18 @@ router.get("/", async (_req: Request, res: Response) => {
   }
 });
 
+router.get("/:id/subspecies", async (req: Request, res: Response) => {
+  try {
+    const speciesId = parseInt(req.params.id as string);
+    const subspecies = await prisma.subSpecies.findMany({
+      where: { speciesId },
+      orderBy: { name: "asc" },
+    });
+    res.json(subspecies);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 export default router;

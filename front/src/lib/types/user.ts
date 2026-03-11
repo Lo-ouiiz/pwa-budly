@@ -14,6 +14,7 @@ export interface User {
   country: string | null;
   birthDate: string;
   role: string;
+  zooId: number | null;
 }
 
 export interface UserContextType {
