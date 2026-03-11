@@ -23,6 +23,7 @@ import Settings from './pages/settings/Settings';
 import LegalNotice from './pages/legal-notice/LegalNotice';
 import ProDashboard from './pages/pro-dashboard/ProDashboard';
 import ProAnimalAdd from './pages/pro-animal-add/ProAnimalAdd';
+import ProAnimalList from './pages/pro-animal-list/ProAnimalList';
 
 function ProtectedRoute({ children, roles }: { children: ReactNode; roles?: UserRole[] }) {
   const location = useLocation();
@@ -164,6 +165,14 @@ function AppRoutes() {
           element={
             <ProtectedRoute roles={['ZOO_ADMIN', 'ZOO_USER']}>
               <ProDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="gestion-animaux"
+          element={
+            <ProtectedRoute roles={['ZOO_ADMIN']}>
+              <ProAnimalList />
             </ProtectedRoute>
           }
         />

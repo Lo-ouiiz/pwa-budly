@@ -18,7 +18,7 @@ const navItems = [
     showOnDesktop: true,
     desktopVariant: 'dropdown',
     subItems: [
-      { label: 'Liste des animaux', href: '/pro/gestion-animaux' },
+      { label: 'Gestion des animaux', href: '/pro/gestion-animaux' },
       { label: 'Ajouter un animal', href: '/pro/ajouter-animal' },
     ],
   },
@@ -39,7 +39,7 @@ const navItems = [
   {
     label: 'Mon profil',
     icon: UserIcon,
-    href: '/profil',
+    href: '/pro/profil',
     showOnDesktop: false,
     desktopVariant: 'link',
   },
@@ -64,7 +64,7 @@ const mobileNavItems = [
   {
     label: 'Mon profil',
     icon: UserIcon,
-    href: '/profil',
+    href: '/pro/profil',
   },
 ];
 
@@ -76,7 +76,7 @@ export default function ProAppMenu() {
       <InstallBanner />
       <header className="nav-desktop">
         <div className="nav-desktop-inner">
-          <NavLink to="/">
+          <NavLink to="/pro/dashboard">
             <img src="/logo/logo-pro.svg" alt="logo pro" />
           </NavLink>
           <nav className="nav-desktop-links">
