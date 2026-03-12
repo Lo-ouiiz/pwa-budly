@@ -8,6 +8,7 @@ import sponsorshipsRoutes from "./sponsorships.routes.js";
 import invoicesRoutes from "./invoices.routes.js";
 import speciesRoutes from "./species.routes.js";
 import stripeRoutes from "./stripe.routes.js";
+import dashboardRoutes from "./dashboard.route.js";
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use("/sponsorships", sponsorshipsRoutes);
 router.use("/invoices", invoicesRoutes);
 router.use("/species", speciesRoutes);
 router.use("/stripe", stripeRoutes);
+router.use("/dashboard", dashboardRoutes);
 
 export default router;
